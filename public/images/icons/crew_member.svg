@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="49" height="37" viewBox="0 0 49 37">
+  <defs>
+    <filter id="Rectangle_11305" x="25.308" y="19.123" width="17.429" height="13.357" filterUnits="userSpaceOnUse">
+      <feOffset dx="-2" dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-color="#0ab4ff" flood-opacity="0.361"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle_11306" x="25.308" y="22.485" width="21.501" height="13.357" filterUnits="userSpaceOnUse">
+      <feOffset dx="-2" dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur-2"/>
+      <feFlood flood-color="#0ab4ff" flood-opacity="0.361"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_15216" data-name="Group 15216" transform="translate(-0.5 -6)">
+    <path id="Rectangle_12620" data-name="Rectangle 12620" d="M10,0H28A10,10,0,0,1,38,10v3a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V10A10,10,0,0,1,10,0Z" transform="translate(0.5 30)" fill="#0095da"/>
+    <circle id="Ellipse_993" data-name="Ellipse 993" cx="11" cy="11" r="11" transform="translate(8.5 6)" fill="#0095da"/>
+    <g id="Group_15195" data-name="Group 15195" transform="translate(28.167 23)">
+      <path id="Rectangle_11304" data-name="Rectangle 11304" d="M8.5,0h4A8.5,8.5,0,0,1,21,8.5V17a0,0,0,0,1,0,0H8.5A8.5,8.5,0,0,1,0,8.5v0A8.5,8.5,0,0,1,8.5,0Z" transform="translate(0.333 0)" fill="#39bb9d"/>
+      <g id="Group_15186" data-name="Group 15186" transform="translate(5.64 6.123)">
+        <g transform="matrix(1, 0, 0, 1, -33.31, -23.12)" filter="url(#Rectangle_11305)">
+          <rect id="Rectangle_11305-2" data-name="Rectangle 11305" width="5.429" height="1.357" rx="0.679" transform="translate(33.31 23.12)" fill="#fff"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -33.31, -23.12)" filter="url(#Rectangle_11306)">
+          <rect id="Rectangle_11306-2" data-name="Rectangle 11306" width="9.501" height="1.357" rx="0.679" transform="translate(33.31 26.48)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

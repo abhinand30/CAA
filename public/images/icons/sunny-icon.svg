@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="19.693" height="19.701" viewBox="0 0 19.693 19.701">
+  <g id="Group_55" data-name="Group 55" transform="translate(0 0)">
+    <path id="Op_component_1" data-name="Op component 1" d="M1527.757,51.735A4.755,4.755,0,1,0,1523,46.98,4.758,4.758,0,0,0,1527.757,51.735Zm0-8.135a3.38,3.38,0,1,1-3.378,3.38A3.377,3.377,0,0,1,1527.757,43.6Z" transform="translate(-1517.91 -37.129)" fill="#fff"/>
+    <path id="Op_component_2" data-name="Op component 2" d="M1529.211,39.064V36.872a.7.7,0,1,0-1.392,0v2.191a.7.7,0,1,0,1.392,0Z" transform="translate(-1518.669 -36.176)" fill="#fff"/>
+    <rect id="Op_component_3" data-name="Op component 3" width="1.39" height="3.581" rx="0.695" transform="translate(9.151 16.121)" fill="#fff"/>
+    <path id="Op_component_4" data-name="Op component 4" d="M1534.851,42.1l1.545-1.546a.7.7,0,0,0-.985-.985l-1.545,1.546a.7.7,0,0,0,0,.985.7.7,0,0,0,.985,0Z" transform="translate(-1519.589 -36.678)" fill="#fff"/>
+    <path id="Op_component_5" data-name="Op component 5" d="M1520.345,55.623a.681.681,0,0,0,.492.2.709.709,0,0,0,.492-.2l1.545-1.546a.7.7,0,0,0-.985-.985l-1.545,1.546A.7.7,0,0,0,1520.345,55.623Z" transform="translate(-1517.46 -38.808)" fill="#fff"/>
+    <path id="Op_component_6" data-name="Op component 6" d="M1539.663,47.738a.689.689,0,0,0-.7-.7h-2.19a.7.7,0,0,0,0,1.393h2.19A.7.7,0,0,0,1539.663,47.738Z" transform="translate(-1519.97 -37.887)" fill="#fff"/>
+    <path id="Op_component_7" data-name="Op component 7" d="M1517.654,48.435h2.19a.7.7,0,0,0,0-1.393h-2.19a.689.689,0,0,0-.7.7A.7.7,0,0,0,1517.654,48.435Z" transform="translate(-1516.958 -37.887)" fill="#fff"/>
+    <path id="Op_component_8" data-name="Op component 8" d="M1535.9,55.826a.709.709,0,0,0,.492-.2.7.7,0,0,0,0-.985l-1.545-1.546a.7.7,0,0,0-.985.985l1.545,1.546A.709.709,0,0,0,1535.9,55.826Z" transform="translate(-1519.589 -38.808)" fill="#fff"/>
+    <path id="Op_component_9" data-name="Op component 9" d="M1522.875,42.1a.7.7,0,0,0,0-.985l-1.545-1.546a.7.7,0,0,0-.985.985l1.545,1.546a.7.7,0,0,0,.985,0Z" transform="translate(-1517.46 -36.678)" fill="#fff"/>
+  </g>
+</svg>

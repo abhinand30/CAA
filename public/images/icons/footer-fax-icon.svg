@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17.991" height="15.641" viewBox="0 0 17.991 15.641">
+  <g id="Group_23297" data-name="Group 23297" transform="translate(-336.9 -7259.979)">
+    <rect id="Rectangle_16657" data-name="Rectangle 16657" width="15.45" height="15.52" transform="translate(338 7260)" fill="#fff" opacity="0"/>
+    <g id="Group_23115" data-name="Group 23115" transform="translate(-520 3095)">
+      <rect id="Rectangle_16590" data-name="Rectangle 16590" width="17.789" height="15.439" transform="translate(857 4165)" fill="none"/>
+      <g id="_249294" data-name="249294" transform="translate(857 4165.079)">
+        <g id="Group_16335" data-name="Group 16335" transform="translate(4.364 5.371)">
+          <g id="Group_16334" data-name="Group 16334">
+            <rect id="Rectangle_13899" data-name="Rectangle 13899" width="5.035" height="0.671" fill="#85849e" stroke="#85849e" stroke-width="0.2"/>
+          </g>
+        </g>
+        <g id="Group_16337" data-name="Group 16337" transform="translate(4.364 7.721)">
+          <g id="Group_16336" data-name="Group 16336">
+            <rect id="Rectangle_13900" data-name="Rectangle 13900" width="6.713" height="0.671" fill="#85849e" stroke="#85849e" stroke-width="0.2"/>
+          </g>
+        </g>
+        <g id="Group_16339" data-name="Group 16339" transform="translate(4.364 10.07)">
+          <g id="Group_16338" data-name="Group 16338">
+            <rect id="Rectangle_13901" data-name="Rectangle 13901" width="6.713" height="0.671" fill="#85849e" stroke="#85849e" stroke-width="0.2"/>
+          </g>
+        </g>
+        <g id="Group_16341" data-name="Group 16341" transform="translate(0 0)">
+          <g id="Group_16340" data-name="Group 16340">
+            <path id="Path_45032" data-name="Path 45032" d="M16.154,33.811H1.721A1.683,1.683,0,0,0,0,35.449v6.039a1.681,1.681,0,0,0,1.678,1.68,1.6,1.6,0,0,0,1.007-.344v6.05a.412.412,0,0,0,.378.378H14.812c.185,0,.294-.192.294-.378v-6.05a1.791,1.791,0,0,0,1.007.344,1.681,1.681,0,0,0,1.678-1.68V35.449A1.611,1.611,0,0,0,16.154,33.811Zm-1.72,7.68v7.09H3.357V38.133c0-.185.194-.294.38-.294h10.4a.27.27,0,0,1,.3.294v3.358Zm2.685,0a1.007,1.007,0,1,1-2.014,0V37.839h.671v-.671H2.014v.671h.671v3.652a1.007,1.007,0,1,1-2.014,0V35.449a1.011,1.011,0,0,1,1.05-.967H16.154a.939.939,0,0,1,.966.967v6.039Z" transform="translate(0 -33.811)" fill="#85849e" stroke="#85849e" stroke-width="0.2"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

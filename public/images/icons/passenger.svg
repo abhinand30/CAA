@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="45.571" height="37" viewBox="0 0 45.571 37">
+  <g id="Group_15240" data-name="Group 15240" transform="translate(-895.929 -1907.951)">
+    <path id="Rectangle_12620" data-name="Rectangle 12620" d="M10,0H28A10,10,0,0,1,38,10v3a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V10A10,10,0,0,1,10,0Z" transform="translate(895.929 1931.951)" fill="#0095da"/>
+    <circle id="Ellipse_993" data-name="Ellipse 993" cx="11" cy="11" r="11" transform="translate(903.929 1907.951)" fill="#0095da"/>
+    <path id="Rectangle_11304" data-name="Rectangle 11304" d="M8.5,0h4A8.5,8.5,0,0,1,21,8.5V17a0,0,0,0,1,0,0H8.5A8.5,8.5,0,0,1,0,8.5v0A8.5,8.5,0,0,1,8.5,0Z" transform="translate(920.5 1924.951)" fill="#39bb9d"/>
+    <path id="Path_42890" data-name="Path 42890" d="M267.637,361a4.7,4.7,0,0,0-3.5,1.564.671.671,0,1,0,1,.895,3.347,3.347,0,0,1,4.993,0,.671.671,0,0,0,1-.895A4.7,4.7,0,0,0,267.637,361Z" transform="translate(663.605 1574.786)" fill="#fff"/>
+    <path id="Path_42891" data-name="Path 42891" d="M271.979,302.958h1.958a.979.979,0,0,0,0-1.958h-1.958a.979.979,0,1,0,0,1.958Z" transform="translate(655.348 1630.219)" fill="#fff"/>
+    <path id="Path_42892" data-name="Path 42892" d="M361.979,302.958h1.958a.979.979,0,1,0,0-1.958h-1.958a.979.979,0,0,0,0,1.958Z" transform="translate(571.221 1630.219)" fill="#fff"/>
+  </g>
+</svg>

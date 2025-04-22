@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="37.604" height="29.367" viewBox="0 0 37.604 29.367">
+  <defs>
+    <filter id="Rectangle_11305" x="17.561" y="13.746" width="16.166" height="13.042" filterUnits="userSpaceOnUse">
+      <feOffset dx="-2" dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-color="#0ab4ff" flood-opacity="0.361"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle_11306" x="17.561" y="16.325" width="19.291" height="13.042" filterUnits="userSpaceOnUse">
+      <feOffset dx="-2" dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur-2"/>
+      <feFlood flood-color="#0ab4ff" flood-opacity="0.361"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_15268" data-name="Group 15268" transform="translate(0 0)">
+    <path id="Rectangle_12620" data-name="Rectangle 12620" d="M9.977,0h9.209a9.977,9.977,0,0,1,9.977,9.977v0a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0v0A9.977,9.977,0,0,1,9.977,0Z" transform="translate(0 18.419)" fill="#0095da"/>
+    <circle id="Ellipse_993" data-name="Ellipse 993" cx="8.442" cy="8.442" r="8.442" transform="translate(6.139 0)" fill="#0095da"/>
+    <g id="Group_15195" data-name="Group 15195" transform="translate(21.488 13.047)">
+      <path id="Rectangle_11304" data-name="Rectangle 11304" d="M6.523,0h3.07a6.523,6.523,0,0,1,6.523,6.523v6.523a0,0,0,0,1,0,0H6.523A6.523,6.523,0,0,1,0,6.523v0A6.523,6.523,0,0,1,6.523,0Z" transform="translate(0 0)" fill="#39bb9d"/>
+      <g id="Group_15186" data-name="Group 15186" transform="translate(4.073 4.699)">
+        <g transform="matrix(1, 0, 0, 1, -25.56, -17.75)" filter="url(#Rectangle_11305)">
+          <rect id="Rectangle_11305-2" data-name="Rectangle 11305" width="4.166" height="1.042" rx="0.521" transform="translate(25.56 17.75)" fill="#fff"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -25.56, -17.75)" filter="url(#Rectangle_11306)">
+          <rect id="Rectangle_11306-2" data-name="Rectangle 11306" width="7.291" height="1.042" rx="0.521" transform="translate(25.56 20.33)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

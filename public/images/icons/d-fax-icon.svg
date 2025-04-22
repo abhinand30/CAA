@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26">
+  <g id="Group_23972" data-name="Group 23972" transform="translate(-384 -749)">
+    <g id="Ellipse_2879" data-name="Ellipse 2879" transform="translate(384 749)" fill="#fff" stroke="#39bb9d" stroke-width="1">
+      <circle cx="13" cy="13" r="13" stroke="none"/>
+      <circle cx="13" cy="13" r="12.5" fill="none"/>
+    </g>
+    <g id="Group_23115" data-name="Group 23115" transform="translate(-467 -3409.2)">
+      <rect id="Rectangle_16590" data-name="Rectangle 16590" width="14.068" height="12.209" transform="translate(857 4165)" fill="none"/>
+      <g id="_249294" data-name="249294" transform="translate(857 4165.063)">
+        <g id="Group_16335" data-name="Group 16335" transform="translate(3.451 4.247)">
+          <g id="Group_16334" data-name="Group 16334">
+            <rect id="Rectangle_13899" data-name="Rectangle 13899" width="3.982" height="0.531" fill="#39bb9d" stroke="#39bb9d" stroke-width="0.3"/>
+          </g>
+        </g>
+        <g id="Group_16337" data-name="Group 16337" transform="translate(3.451 6.105)">
+          <g id="Group_16336" data-name="Group 16336">
+            <rect id="Rectangle_13900" data-name="Rectangle 13900" width="5.309" height="0.531" fill="#39bb9d" stroke="#39bb9d" stroke-width="0.3"/>
+          </g>
+        </g>
+        <g id="Group_16339" data-name="Group 16339" transform="translate(3.451 7.964)">
+          <g id="Group_16338" data-name="Group 16338">
+            <rect id="Rectangle_13901" data-name="Rectangle 13901" width="5.309" height="0.531" fill="#39bb9d" stroke="#39bb9d" stroke-width="0.3"/>
+          </g>
+        </g>
+        <g id="Group_16341" data-name="Group 16341" transform="translate(0 0)">
+          <g id="Group_16340" data-name="Group 16340">
+            <path id="Path_45032" data-name="Path 45032" d="M12.774,33.811H1.361A1.331,1.331,0,0,0,0,35.107v4.775a1.33,1.33,0,0,0,1.327,1.329,1.265,1.265,0,0,0,.8-.272v4.785a.326.326,0,0,0,.3.3h9.291c.147,0,.232-.152.232-.3V40.939a1.417,1.417,0,0,0,.8.272,1.33,1.33,0,0,0,1.327-1.329V35.107A1.274,1.274,0,0,0,12.774,33.811Zm-1.36,6.073v5.607H2.655V37.229c0-.146.153-.232.3-.232H11.18a.214.214,0,0,1,.234.232v2.656Zm2.124,0a.8.8,0,1,1-1.593,0V37h.531v-.531H1.593V37h.531v2.888a.8.8,0,1,1-1.593,0V35.107a.8.8,0,0,1,.83-.765H12.775a.743.743,0,0,1,.764.765v4.775Z" transform="translate(0 -33.811)" fill="#39bb9d" stroke="#39bb9d" stroke-width="0.3"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

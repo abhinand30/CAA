@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="784" height="330" viewBox="0 0 784 330">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="NoPath_-_Copy_130_" data-name="NoPath - Copy (130)" width="784" height="330" transform="translate(0.774 0.13)" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_107" data-name="Mask Group 107" transform="translate(-0.774 -0.131)" opacity="0.4" clip-path="url(#clip-path)" style="isolation: isolate">
+    <g id="Group_15559" data-name="Group 15559" transform="translate(0.08 -126.229)" opacity="0.405">
+      <path id="Path_43215" data-name="Path 43215" d="M265.34,830.28c2.127.515,4.232,1.03,6.337,1.545,376.449,91.52,557.071,86.593,640.687,68.832,53.362-11.308,67.2-27.857,67.2-27.857,86.77-100.115-120.448-182.544-123.14-183.6,49.623,44.831,57.6,77.569,38.223,101.217-74.972,91.632-560.3,46.712-622.794,40.509C268.094,830.548,265.858,830.325,265.34,830.28Z" transform="translate(12.589 -689.2)" fill="#fff" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1" opacity="0.29"/>
+      <path id="Path_43216" data-name="Path 43216" d="M861.718,748.195l-82.85,80.615L601.816,748.195S783.341,797.46,861.718,748.195Z" transform="translate(-601.816 -616.095)" fill="#fff" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1" opacity="0.29"/>
+      <path id="Path_43217" data-name="Path 43217" d="M246.52,768.2c1.142.448,15.518,6.091,39.7,14.981,110.935,40.755,428.376,149.986,621.586,140.7,106.568-5.128,175.337-46.307,150.771-154.96,1.344,7.725,8.531,72.844-131.559,91.7v.023c-106.322,14.284-297.514,1.926-640.53-82.451Q266.842,773.354,246.52,768.2Z" transform="translate(-8.048 -591.294)" fill="#fff" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1" opacity="0.29"/>
+      <path id="Path_43218" data-name="Path 43218" d="M274.826,788.285c1.1.672,36.612,22.839,92.729,52.579,130.059,68.881,370.85,178.495,550.8,155.9,61.581-7.725,116.04-30.923,156.483-76.539-1.075.761-32.224,22.572-117.854,27.3-103.568,5.71-286.787-13.593-592.833-125.334v-.023Q321.123,806.479,274.826,788.285Z" transform="translate(-82.707 -566.41)" fill="#fff" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1" opacity="0.29"/>
+    </g>
+  </g>
+</svg>
