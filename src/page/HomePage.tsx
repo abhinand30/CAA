@@ -3,25 +3,45 @@ import { useState } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { tabArray } from '../common/data/dataArray'
+import { fieldsTypes, FormType, tabTypes } from '../common/types/types'
+import Tab from '../components/Tab'
 
 
 
 const HomePage = () => {
   const [selectTab, setSelectTab] = useState<number>(tabArray[0].id);
-  const [formData, setFormData] = useState<[]>([]);
-  // const [selectedPurpose,setSelectedPurpose]=useState<string>('')
-  // const [errors,setErrors]=useState({});
+  const [formData, setFormData] = useState<FormType>({});
+  const [errors,setErrors]=useState<FormType>({});
 
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState, [name]: value
     }))
-
+    setErrors((prevState) => ({
+      ...prevState, [name]: ''
+    }))
   }
 
-  const renderField = (field) => {
+  const isValidate=()=>{
+    const currentTab:tabTypes=tabArray[selectTab-1];
+    const newError:FormType={}
+    currentTab.fields.forEach((key)=>{
+      if(!formData[key.name]?.trim()|| !key?.refKey){
+        newError[key.name]=`${key.label} is required`
+      }
+
+      if(!formData[key.name]?.trim()&&key?.refKey === formData?.purpose){
+        newError[key.name]=`${key.label} is required`
+      }
+     
+    })
+    setErrors(newError);
+    return Object.keys(errors).length===0;
+  }
+
+  const renderField = (field:fieldsTypes) => {
 
     switch (field.types) {
       case 'text':
@@ -29,7 +49,7 @@ const HomePage = () => {
       case 'email':
         return (
           <input
-            type="text"
+            type={field.types}
             name={field.name}
             value={formData[field.name]}
             onChange={(e) => handleChange(e)}
@@ -48,7 +68,7 @@ const HomePage = () => {
             id={field.name}
           >
             <option value={''}></option>
-            {field.options.map((options, index) => (
+            {field.options?.map((options, index) => (
               <option key={index} value={options} >{options}</option>
             ))}
 
@@ -60,6 +80,7 @@ const HomePage = () => {
             type="file"
             name={field.name}
             multiple={field.multiple}
+            onChange={(e) => handleChange(e)}
             value={formData[field.name]}
             className="form-control"
             id={field.name}
@@ -72,6 +93,7 @@ const HomePage = () => {
           <textarea
             className="form-control"
             placeholder="Please provide additional details"
+            onChange={(e) => handleChange(e)}
             defaultValue={""}
           />
         )
@@ -81,6 +103,14 @@ const HomePage = () => {
     }
   }
 
+  const handelNext=()=>{
+    if( isValidate()){
+      setSelectTab(selectTab+1);
+      setFormData({})
+    }
+    console.log(isValidate())
+  };
+  
   return (
     <>
       <Header />
@@ -99,7 +129,7 @@ const HomePage = () => {
                         aria-label="Scroll left"
                       >
                         <svg
-                          title="Left arrow"
+                          // title="Left arrow"
                           className="nav-scroller-icon"
                           width={21}
                           height={32}
@@ -115,32 +145,11 @@ const HomePage = () => {
                       >
 
                         {tabArray.map((tab) => (
-                          <li
-                            key={tab.id}
-                            className="nav-item "
-                            role="presentation"
-                          >
-                            <button
-                              onClick={() => setSelectTab(tab.id)}
-                              className={`nav-link ${selectTab === tab.id ? 'active' : ''}`}
-                              id="general-tab"
-                              data-bs-toggle="tab"
-                              data-bs-target="#general"
-                              type="button"
-                              role="tab"
-                              aria-controls="home"
-                              aria-selected="true"
-                            >
-                              <span className="form-wizard__completed" />
-                              <span className="form-wizard__no">0{tab.id}</span>
-                              {tab.tab}
-                            </button>
-                          </li>
+                          <Tab tab={tab} key={tab.id} selectTab={selectTab} handelNext={handelNext}/>
                         ))}
                       </ul>
-
-
                     </div>
+
                   </div>
                 </div>
 
@@ -164,8 +173,8 @@ const HomePage = () => {
                                 writing. They're smaller than the main headline but
                                 larger than the paragraph text of the article.
                               </p>
-                              <form className="form-wrapper ">
-                                <div className="row ">
+                              <form className="form-wrapper" onSubmit={(e)=>{e.preventDefault();handelNext()}}>
+                                <div className="row">
                                   {tabArray[selectTab-1]?.fields.map((field, index) => (
                                     (!field?.refKey || field?.refKey === formData.purpose ? (
                                       <div key={index} className={`mt-3 col-12 ${field.types==='textarea'?'col-xl-12':'col-md-6'}`}>
@@ -173,13 +182,17 @@ const HomePage = () => {
                                           {field.label}
                                         </label>
                                         {renderField(field)}
+                                        <div className="validation-wrapper">
+                                          
+                                             <p className="validation-wrapper">{errors[field.name]}</p>
+                                       </div>
                                       </div>
                                     ) : (null))
 
                                   ))}
                                 </div>
                                 <div className="btn-pagination">
-                                  <button className="btn btn-primary">Next</button>
+                                  <button type='submit' className="btn btn-primary">Next</button>
                                 </div>
                               </form>
 
