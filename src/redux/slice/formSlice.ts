@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { FormType } from '../../common/types/types'
+import { FormsProps } from '../../common/types/types'
 
 interface formState{
-    forms:FormType[]
+    forms:FormsProps[]
 }
 const initialState:formState={
     forms:[]
@@ -12,11 +12,16 @@ const formSlice = createSlice({
   initialState,
   reducers: {
     addForm(state, action) {
+      console.log(action.payload)
       state.forms.push(action.payload)
     },
+    clearFrom(state){
+      state.forms=[]
+    }
   },
+  
 })
 
-export const { addForm } = formSlice.actions;
-
+export const { addForm,clearFrom } = formSlice.actions;
+export const storedFormData=(state:{forms:formState})=>state.forms.forms;
 export default formSlice.reducer

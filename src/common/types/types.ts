@@ -7,7 +7,17 @@ interface fieldsTypes{
     refKey?:string;
 }
 interface FormType {
-    [key: string]: string;
+    [key: string]:any;
+    // {
+    //     lastModified?:string;
+    //     lastModifiedDate?:Date;
+    //     name:string;
+    //     size:number;
+    //     type:string;}[];
+}
+interface FormsProps{
+    [naem: string]:{[key: string]:any}
+
 }
 interface tabTypes{
     fields:fieldsTypes[];
@@ -21,4 +31,4 @@ interface tabProps{
     selectTab:number;
     handelNext:() => void
 }
-export type{fieldsTypes,FormType,tabTypes,tabProps}
+export type{FormsProps,fieldsTypes,FormType,tabTypes,tabProps}

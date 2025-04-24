@@ -10,7 +10,7 @@ const Tab:React.FC<tabProps> = (props) => {
             role="presentation"
         >
             <button
-                // onClick={handelNext}
+                onClick={handelNext}
                 className={`nav-link ${selectTab === tab.id ? 'active' : ''}`}
                 id="general-tab"
                 data-bs-toggle="tab"
