@@ -1,144 +1,76 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import {  useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { formArray, tabArray } from '../common/data/dataArray'
-import { fieldsTypes, FormType, tabTypes } from '../common/types/types'
+import { FormType, tabTypes } from '../common/types/types'
 import Tab from '../components/Tab'
 import SummaryComponent from '../components/SummaryComponent'
-import { addForm } from '../redux/slice/formSlice'
+import { addForm, storedFormData } from '../redux/slice/formSlice'
+import FormComponent from '../components/FormComponent'
 
 
 
 const HomePage = () => {
-  const dispatch=useDispatch();
- 
+  const storedData = useSelector(storedFormData)
+console.log('storedData', storedData)
+  const dispatch = useDispatch();
+
   const [selectTab, setSelectTab] = useState<number>(tabArray[0].id);
+  const currentTab = formArray[selectTab - 1]
+  const currentForm=storedData.find((form)=>form.title===tabArray[selectTab-1].tab);
+
   const [formData, setFormData] = useState<FormType>({});
-  const [errors,setErrors]=useState<FormType>({});
+  console.log('formData', formData)
+  const [errors, setErrors] = useState<FormType>({});
 
-  // console.log(storedData)
-  const currentTab=formArray[selectTab-1]
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value,type, files } = e.target;
-    if(name==='purpose'){
-      setFormData({})
-    }
-    if(type==='file'){
-      const fileList = files ? Array.from(files) : [];
-      setFormData((prevState) => ({
-        ...prevState, [name]:fileList
-      }))
-    }else{
-      setFormData((prevState) => ({
-        ...prevState, [name]: value
-      }))
-    } 
-    setErrors((prevState) => ({
-      ...prevState, [name]: ''
-    }))
-  }
 
-  const isValidate=()=>{
-    const currentTab:tabTypes=formArray[selectTab-1];
-    const newError:FormType={};
-     
-    currentTab.fields.forEach((key)=>{
-      const value=key.types==='file'?formData[key.name].length:formData[key.name]?.trim()??'';
+  useEffect(() => {
+    setFormData(currentForm?.formData|| {});
+  }, [currentForm,selectTab]);
 
-      if(!value&& !key?.refKey){
-        newError[key.name]=`${key.label} is required`
+  
+  const isValidate = () => {
+    const currentTab: tabTypes = formArray[selectTab - 1];
+    const newError: FormType = {};
+
+    currentTab.fields.forEach((key) => {
+      
+      const value = Array.isArray(formData[key.name]) ? formData[key.name]?.length>0 : formData[key.name]?.trim() ?? '';
+      
+      if (!value && !key?.refKey) {
+        newError[key.name] = `${key.label} is required`
       }
 
-      if(!value&&key?.refKey === formData?.purpose){
-        newError[key.name]=`${key.label} is required`
+      if (!value && key?.refKey === formData?.purpose) {
+        newError[key.name] = `${key.label} is required`
       }
-     
+
     })
     setErrors(newError);
-    return Object.keys(newError).length===0;
+    return Object.keys(newError).length === 0;
   }
 
-  
+
+ 
   const handelNext = () => {
     if (isValidate()) {
-      const name = currentTab.tab;
-      const data= {name: formData }
-      setSelectTab(selectTab + 1);
-      dispatch(addForm(data));
-      setFormData({});
+    setSelectTab(selectTab + 1);
+    dispatch(addForm({ title: currentTab.tab, formData }));
+    setFormData({});
     }
   };
-  
 
 
-  const renderField = (field:fieldsTypes) => {
-
-    switch (field.types) {
-      case 'text':
-      case 'number':
-      case 'email':
-        return (
-          <input
-            type={field.types}
-            name={field.name}
-            value={formData[field.name]}
-            onChange={(e) => handleChange(e)}
-            className="form-control"
-            id={field.name}
-            placeholder={field.label}
-          />
-        );
-      case 'select':
-        return (
-          <select
-            name={field.name}
-            value={formData[field.name]}
-            onChange={(e) => handleChange(e)}
-            className="form-control"
-            id={field.name}
-          >
-            <option value={''}>{field.label}</option>
-            {field.options?.map((options, index) => (
-              <option key={index} value={options} >{options}</option>
-            ))}
-
-          </select>
-        );
-      case 'file':
-        return (
-          <input
-            type="file"
-            name={field.name}
-            multiple={field.multiple}
-            onChange={(e) => handleChange(e)}
-            className="form-control"
-            id={field.name}
-            placeholder={field.label}
-          />
-        );
-        // col-12 col-xl-12 form-group
-      case 'textarea':
-        return (
-          <textarea
-            className="form-control"
-            name={field.name}
-            placeholder={`Please provide ${field.label}`}
-            onChange={(e) => handleChange(e)}
-            value={formData[field.name]}
-          />
-        )
-      default:
-        return null;
+  const handlePrevious = (id: number) => {
+    if(storedData.length>=id){
+      setSelectTab(id);
     }
   }
 
-  
-//  const title=tabArray[selectTab-1].tab
 
-  
   return (
     <>
       <Header />
@@ -173,7 +105,7 @@ const HomePage = () => {
                       >
 
                         {tabArray.map((tab) => (
-                          <Tab tab={tab} key={tab.id} selectTab={selectTab} handelNext={handelNext}/>
+                          <Tab tab={tab} key={tab.id} selectTab={selectTab} onClick={handlePrevious} />
                         ))}
                       </ul>
                     </div>
@@ -189,83 +121,13 @@ const HomePage = () => {
                       role="tabpanel"
                       aria-labelledby="general-tab"
                     >
-                      {currentTab.id===4?(
-                        <SummaryComponent/>
-                      ):(<div className="section-wrapper">
-                        <div className="row">
-                          <div className="col-12 col-md-9 section-wrapper-content">
-                            <span className="number-line">0{selectTab}</span>
-                            
-                            <aside>
-                              <h3>{currentTab.tab}</h3>
-                              <p className="content-opacity">
-                                A sub-heading is a mini-headline given to a
-                                subsection or paragraph within a main piece of
-                                writing. They're smaller than the main headline but
-                                larger than the paragraph text of the article.
-                              </p>
-                             
-                              <form className="form-wrapper" onSubmit={(e)=>{e.preventDefault();handelNext()}}>
-                                <div className="row">
-                              
-                                  {currentTab?.fields.map((field, index) => (
-                                    (!field?.refKey || field?.refKey === formData.purpose ? (
-                                      <div key={index} className={`mt-3 col-12 ${field.types==='textarea'?'col-xl-12':'col-md-6'}`}>
-                                        <label htmlFor="">
-                                          {field.label}
-                                        </label>
-                                        {renderField(field)}
-                                        <div className="validation-wrapper">
-                                          
-                                             <p className="validation-wrapper">{errors[field.name]}</p>
-                                       </div>
-                                      </div>
-                                    ) : (null))
+                      {currentTab.id === 4 ? (
+                        <SummaryComponent />
+                      ) : (
+                        <FormComponent currentTab={currentTab} handelNext={handelNext} formData={formData}
+                          setFormData={setFormData} errors={errors} setErrors={setErrors} />
+                      )}
 
-                                  ))}
-                                </div>
-                                <div className="btn-pagination">
-                                  <button type='submit' className="btn btn-primary">Next</button>
-                                </div>
-                              </form>
-
-                              {/* <div className="fileUpload">
-                                          <input
-                                            id="attachment1"
-                                            type="file"
-                                            className="uploadBtn upload"
-                                          />
-                                          <input
-                                            className="uploadFile path"
-                                            placeholder="Choose file"
-                                          />
-                                          <span>Upload</span>
-                                        </div> */}
-                              {/* <ul class="validation-wrapper">
-                                          <li>
-                                             <a>test error</a>
-                                          </li>
-                                       </ul> */}
-                             
-
-                            </aside>
-                                  
-                          </div>
-                          {/* <div className="col-12 col-md-3 section-wrapper-box">
-                            <div className="information-box">
-                              <img src="images/icons/information-icon.svg" />
-                              <h4>General information</h4>
-                              <p>
-                                This form in only Applicable for Qatar Airways
-                                Staffs. You will be asked to provide proof to verify
-                                it.
-                              </p>
-                            </div>
-                          </div> */}
-                        </div>
-                      </div>)}
-                      
-                       
                     </div>
                   </div>
                 </div>
@@ -275,7 +137,7 @@ const HomePage = () => {
         </div>
       </main>
       <Footer />
-      {/*  */}
+    
     </>
 
   )

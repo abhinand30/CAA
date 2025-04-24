@@ -12,8 +12,11 @@ const formSlice = createSlice({
   initialState,
   reducers: {
     addForm(state, action) {
-      console.log(action.payload)
+     const ifExists=state.forms.findIndex((form)=>form.title===action.payload.title)
+     if(ifExists===-1){
       state.forms.push(action.payload)
+     }
+      
     },
     clearFrom(state){
       state.forms=[]

@@ -16,7 +16,8 @@ interface FormType {
     //     type:string;}[];
 }
 interface FormsProps{
-    [naem: string]:{[key: string]:any}
+    [title: string];
+    [key: string]:any;
 
 }
 interface tabTypes{
@@ -29,6 +30,19 @@ interface tabProps{
         tab: string;
     }
     selectTab:number;
-    handelNext:() => void
+    onClick:(id: number) => void;
 }
-export type{FormsProps,fieldsTypes,FormType,tabTypes,tabProps}
+
+interface FormComponentProps{
+    currentTab: {
+        id: number; 
+        tab: string; 
+    fields:fieldsTypes[];
+    };
+    handelNext:() => void;
+    formData:FormType;
+    setFormData:React.Dispatch<React.SetStateAction<FormType>>;
+    setErrors:React.Dispatch<React.SetStateAction<FormType>>;
+    errors:FormType
+}
+export type{FormsProps,fieldsTypes,FormType,tabTypes,tabProps,FormComponentProps}

@@ -1,17 +1,21 @@
 import React from 'react'
 import { tabProps } from '../common/types/types'
+import { useSelector } from 'react-redux'
+import { storedFormData } from '../redux/slice/formSlice'
 
 const Tab:React.FC<tabProps> = (props) => {
-    const {tab,selectTab,handelNext}=props
+    const {tab,selectTab,onClick}=props;
+    const storedData = useSelector(storedFormData);
+    
     return (
         <li
             key={tab.id}
-            className="nav-item "
+            className={`nav-item nav-fill ${!(storedData.findIndex((data)=>data.title===tab.tab)===-1)&&'form-wizard__filled'}`}
             role="presentation"
         >
             <button
-                onClick={handelNext}
-                className={`nav-link ${selectTab === tab.id ? 'active' : ''}`}
+                onClick={()=>onClick(tab.id)}
+                className={`nav-link ${selectTab === tab.id && 'active'}`}
                 id="general-tab"
                 data-bs-toggle="tab"
                 data-bs-target="#general"
