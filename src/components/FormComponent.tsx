@@ -3,11 +3,12 @@ import React from 'react';
 import { fieldsTypes, FormComponentProps } from '../common/types/types';
 
 
+
 const FormComponent: React.FC<FormComponentProps> = (props) => {
     const { currentTab, handelNext, formData, setFormData, setErrors, errors } = props;
-    
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-        const { name, value, type, files } = e.target;
+        const { name, value, type, files,multiple } = e.target;
         if (name === 'purpose') {
             setFormData({})
         }
@@ -24,8 +25,15 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
         setErrors((prevState) => ({
             ...prevState, [name]: ''
         }))
+        console.log(multiple)
     }
-
+    const handeleAddFileArray=(fieldName)=>{
+        
+        setFormData((prevState) => ({
+            ...prevState, [fieldName]: [{value:''}]
+        }));
+    
+    }
 
     const renderField = (field: fieldsTypes) => {
 
@@ -60,20 +68,28 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
 
                     </select>
                 );
+
             case 'file':
                 return (
-                    <input
-                        type="file"
-                        name={field.name}
-                        multiple={field.multiple}
-                        onChange={(e) => handleChange(e)}
-                        className="form-control"
-                        // value={formData[field.name]}
-                        id={field.name}
-                        placeholder={field.label}
-                    />
+
+                    <div className={'multiple-upload'}>
+                        <aside>
+                            <div className="fileUpload">
+                                <input id="attachment1" type="file" className="uploadBtn upload" name={field.name} onChange={(e) => handleChange(e)}/>
+                                <input className="uploadFile path" placeholder="Choose file" />
+                                <span>Upload</span>
+                            </div>
+                            {formData.f}
+                            <span className="upload-error">Accepted Formats (.pdf/.xlsx/.png/.jpeg) </span>
+                        </aside>
+                        {field.multiple && (
+                            <button type='button' className='multiple-upload__plus' onClick={()=>handeleAddFileArray(field.name)}>
+                                {/* <i className="fa fa-plus" aria-hidden="true"></i> */}
+                                <span className='fs-1'>+</span>
+                            </button>
+                        )}
+                    </div>
                 );
-            // col-12 col-xl-12 form-group
             case 'textarea':
                 return (
                     <textarea

@@ -14,7 +14,7 @@ import FormComponent from '../components/FormComponent'
 
 const HomePage = () => {
   const storedData = useSelector(storedFormData)
-console.log('storedData', storedData)
+// console.log('storedData', storedData)
   const dispatch = useDispatch();
 
   const [selectTab, setSelectTab] = useState<number>(tabArray[0].id);
@@ -56,11 +56,12 @@ console.log('storedData', storedData)
 
  
   const handelNext = () => {
-    if (isValidate()) {
+   
+    // if (isValidate()) {
     setSelectTab(selectTab + 1);
     dispatch(addForm({ title: currentTab.tab, formData }));
     setFormData({});
-    }
+    // }
   };
 
 

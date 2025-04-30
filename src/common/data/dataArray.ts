@@ -54,7 +54,7 @@ const formArray = [
             //Technical
             { name: 'maintenance Confirmation', types: 'file',  label: 'Maintenance Confirmation',refKey:'Technical'  },
             { name: 'crewDetails', types: 'file',  label: 'Crew Details',refKey:'Technical' },
-            { name: 'Crew Disembarkation', types: 'check', label: 'Crew Disembarkation',refKey:'Technical' },
+            // { name: 'Crew Disembarkation', types: 'check', label: 'Crew Disembarkation',refKey:'Technical' },
             { name: 'hotelConfirmation', types: 'file',  label: 'Hotel Confirmation',refKey:'Technical' },//if yes Crew Disembarkation
             { name: 'groundHandling', types: 'text', label: 'Ground Handling Confirmation',refKey:'Technical' },
             //Medical
