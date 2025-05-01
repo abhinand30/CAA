@@ -7,11 +7,12 @@
 //     {id:2,src:DigitalLogo,alt:'qatar digital governmanet logo'},
 //     {id:3,src:qatarLogo,alt:'state qatar logo'},
 // ];
-const tabArray=[{id:1,tab:'Application Information'},{id: 2,tab: 'Purpose and Documents',},{id: 3, tab: 'Additional Information'},{id: 4, tab: 'Summary',}]
-const formArray = [
+// const tabArray=[{id:1,tab:'Application Information'},{id: 2,tab: 'Purpose and Documents',},{id: 3, tab: 'Additional Information'},{id: 4, tab: 'Summary',}]
+const formArray = {
+    app_info:
     {
         id: 1, 
-        tab: 'Application Information',
+        title: 'Application Information',
 
         fields: [
             { name: 'name', types: 'text', label: 'Name' },
@@ -23,9 +24,9 @@ const formArray = [
             { name: 'pin', types: 'number', label: 'Pin' }
         ]
     },
-    {
+    documents:{
         id: 2,
-         tab: 'Purpose and Documents',
+        title: 'Purpose and Documents',
         fields: [
             { name: 'purpose', types: 'select', options: ['Overfly', 'Business', 'Cargo', 'Technical', 'Medical', 'Training'],label:'Purpose',key:'purpose  ' },
             { name: 'ATSRoute', types: 'text', label: 'Complete ATS Route',refKey:'Overfly' },
@@ -69,21 +70,21 @@ const formArray = [
            
         ]
     },
-    {
-        id: 3, tab: 'Additional Information',
+    add_info:{
+        id: 3, title: 'Additional Information',
         fields: [
             { name: 'additionalDetails', types: 'textarea', label: 'Additional details',isRequired:false, },
             { name: 'additionalAttachment', types: 'file',multiple:true, label: 'Additional attachment',isRequired:false, },
         ]
     },
-    {
-        id: 4, tab: 'Summary',
+    summary:{
+        id: 4, title: 'Summary',
         fields: [
             { name: 'agreement', types: 'check', label: 'Agreement' }
         ]
     }
-]
+}
 
 
 
-export { tabArray,formArray }
+export { formArray }

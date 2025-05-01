@@ -1,8 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+
 import { FormsProps } from '../../common/types/types'
 
 interface formState{
-    forms:FormsProps[]
+    forms:FormsProps[];
 }
 const initialState:formState={
     forms:[]
@@ -16,11 +17,10 @@ const formSlice = createSlice({
      if(ifExists===-1){
       state.forms.push(action.payload)
      }
-      
     },
     clearFrom(state){
       state.forms=[]
-    }
+    },
   },
   
 })

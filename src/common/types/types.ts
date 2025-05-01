@@ -34,7 +34,7 @@ interface tabProps{
 }
 
 interface FormComponentProps{
-    currentTab: {
+    formArray: {
         id: number; 
         tab: string; 
     fields:fieldsTypes[];
