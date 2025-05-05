@@ -36,7 +36,7 @@ interface tabProps{
 interface FormComponentProps{
     formArray: {
         id: number; 
-        tab: string; 
+        title: string; 
     fields:fieldsTypes[];
     };
     handelNext:() => void;
@@ -45,4 +45,22 @@ interface FormComponentProps{
     setErrors:React.Dispatch<React.SetStateAction<FormType>>;
     errors:FormType
 }
-export type{FormsProps,fieldsTypes,FormType,tabTypes,tabProps,FormComponentProps}
+interface validationProps{
+    currentForm:{id: number;
+    title: string;
+    fields: {
+        name: string;
+        types: string;
+        options: string[];
+        label: string;
+        key: string;
+        refKey?: string|undefined;
+        multiple?: boolean|undefined;
+        isRequired?: boolean|undefined;
+    }[]
+}
+setErrors:React.Dispatch<React.SetStateAction<FormType>>;
+formData:FormType;
+}
+
+export type{FormsProps,fieldsTypes,FormType,tabTypes,tabProps,FormComponentProps,validationProps}

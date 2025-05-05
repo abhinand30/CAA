@@ -1,14 +1,13 @@
 import { useSelector } from 'react-redux';
 
 import { storedFormData } from '../redux/slice/formSlice';
-import Header from './Header';
-import Footer from './Footer';
-import { formArray } from '../common/data/dataArray';
+
 import Tab from './TabWizard';
 import TabWizard from './TabWizard';
 
-const SummaryComponent = () => {
+const SummaryComponent = (props) => {
     // const {formArray}=props;
+    const {handleTab}=props;
     const storedData = useSelector(storedFormData);
     // console.log(storedData)
     return (
@@ -20,7 +19,7 @@ const SummaryComponent = () => {
                         <div className="col-12">
 
                             <div className="content-area">
-                                <TabWizard formArray={formArray}/>
+                                <TabWizard handleTab={handleTab} tabItem={'summary'}/>
 
                                 <div className="content-area__main">
                                     <div className="tab-content" id="myTabContent">
@@ -34,7 +33,7 @@ const SummaryComponent = () => {
                                                 <div className="row">
                                                     <div className="col-12">
 
-                                                        {storedData.map((data, idx) => (
+                                                        {/* {storedData.map((data, idx) => (
 
                                                             <div key={idx} className="info">
                                                                 <h3>
@@ -69,7 +68,7 @@ const SummaryComponent = () => {
 
                                                                 </table>
                                                             </div>
-                                                        ))}
+                                                        ))} */}
 
                                                         <div className="btn-pagination btn-pagination__review">
                                                             <button className="btn btn-cancel">Cancel</button>

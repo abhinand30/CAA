@@ -1,13 +1,13 @@
 import React from 'react'
-// import { tabProps } from '../common/types/types'
-// import { useSelector } from 'react-redux'
-// import { storedFormData } from '../redux/slice/formSlice'
+import { formArray } from '../common/data/dataArray'
+import { useSelector } from 'react-redux';
+import { storedFormData } from '../redux/slice/formSlice';
 
 const TabWizard = (props) => {
-  const { formArray } = props;
+  const { handleTab } = props;
+  const storedData=useSelector(storedFormData)
+  console.log('::::',storedData)
 
-  // const storedData = useSelector(storedFormData);
-  // console.log(tab.title,'<<')
   return (
     <div className="content-area__head-block">
       <div className="content-area__head-block__wrapper">
@@ -33,15 +33,15 @@ const TabWizard = (props) => {
             role="tablist"
           >
 
-            {Object.values(formArray).map((tab) => (
+            {Object.keys(formArray).map((key) => (
               <li
-                key={tab?.id}
+                key={formArray[key].id}
                 className={`nav-item nav-fill form-wizard__filled`}
                 role="presentation"
               >
                 <button
-                  // onClick={()=>onClick(tab.id)}
-                  className={`nav-link  'active'}`}
+                  onClick={()=>handleTab(key)}
+                  className={`nav-link active`}
                   id="general-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#general"
@@ -51,8 +51,8 @@ const TabWizard = (props) => {
                   aria-selected="true"
                 >
                   <span className="form-wizard__completed" />
-                  <span className="form-wizard__no">0{tab?.id}</span>
-                  {tab.title}
+                  <span className="form-wizard__no">0{formArray[key].id}</span>
+                  {formArray[key].title}
                 </button>
               </li>
             ))}

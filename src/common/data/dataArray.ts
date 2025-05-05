@@ -9,7 +9,7 @@
 // ];
 // const tabArray=[{id:1,tab:'Application Information'},{id: 2,tab: 'Purpose and Documents',},{id: 3, tab: 'Additional Information'},{id: 4, tab: 'Summary',}]
 const formArray = {
-    app_info:
+    appInfo:
     {
         id: 1, 
         title: 'Application Information',
@@ -70,7 +70,7 @@ const formArray = {
            
         ]
     },
-    add_info:{
+    addInfo:{
         id: 3, title: 'Additional Information',
         fields: [
             { name: 'additionalDetails', types: 'textarea', label: 'Additional details',isRequired:false, },
