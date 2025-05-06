@@ -8,16 +8,11 @@ interface fieldsTypes{
 }
 interface FormType {
     [key: string]:any;
-    // {
-    //     lastModified?:string;
-    //     lastModifiedDate?:Date;
-    //     name:string;
-    //     size:number;
-    //     type:string;}[];
 }
 interface FormsProps{
-    [title: string];
-    [key: string]:any;
+    title: string;
+    [key: string]:any
+    []
 
 }
 interface tabTypes{
@@ -41,26 +36,28 @@ interface FormComponentProps{
     };
     handelNext:() => void;
     formData:FormType;
-    setFormData:React.Dispatch<React.SetStateAction<FormType>>;
+    // setFormData:React.Dispatch<React.SetStateAction<FormType>>;
     setErrors:React.Dispatch<React.SetStateAction<FormType>>;
-    errors:FormType
+    errors:FormType;
+    title:string
 }
+
 interface validationProps{
-    currentForm:{id: number;
-    title: string;
-    fields: {
-        name: string;
-        types: string;
-        options: string[];
-        label: string;
-        key: string;
-        refKey?: string|undefined;
-        multiple?: boolean|undefined;
-        isRequired?: boolean|undefined;
-    }[]
-}
-setErrors:React.Dispatch<React.SetStateAction<FormType>>;
-formData:FormType;
+//     currentForm:{id: number; 
+//     fields: {
+//         name: string;
+//         types: string;
+//         options: string[];
+//         label: string;
+//         key: string;
+//         refKey?: string|undefined;
+//         multiple?: boolean|undefined;
+//         isRequired?: boolean|undefined;
+//     }[]
+// }
+title: string;
+setErrors?:React.Dispatch<React.SetStateAction<FormType>>;
+storedData:FormType;
 }
 
 export type{FormsProps,fieldsTypes,FormType,tabTypes,tabProps,FormComponentProps,validationProps}

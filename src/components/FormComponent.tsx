@@ -1,30 +1,22 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import { fieldsTypes, FormComponentProps } from '../common/types/types';
+import { addFileArray, deleteFileArray, updateField } from '../redux/slice/formSlice';
 
 
 
 
 const FormComponent: React.FC<FormComponentProps> = (props) => {
-  const { formArray, handelNext, formData, setFormData, setErrors, errors } = props;
+  const { formArray, handelNext, formData, setErrors, errors, title } = props;
+
+  const dispatch = useDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>, index?: number) => {
-    const { name, value, type, files, } = e.target;
-    if (name === 'purpose') {
-      setFormData({})
-    }
-    if (type === 'file' && files[0]) {
+    const { name, value, type, files } = e.target;
 
-      setFormData((prevState) => {
-        const updatedFile = Array.isArray(prevState[name]) ? [...prevState[name]] : [{ id: 0, fileName: '' }]
-        updatedFile[index] = { fileName: files?.[0].name, id: index }
-        return { ...prevState, [name]: updatedFile }
-      })
-    } else {
-      setFormData((prevState) => ({
-        ...prevState, [name]: value
-      }))
-    }
+    dispatch(updateField({ title, name, value: type === 'file' ? files?.[0]?.name : value, index }))
+
     setErrors((prevState) => ({
       ...prevState, [name]: ''
     }))
@@ -33,34 +25,14 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
 
 
   const handleAddFileArray = (fieldName: string) => {
-
-    const fileValidation = formData[fieldName]?.some((field) =>
-      field.fileName === ''
-    )
-
-    if (fileValidation || formData[fieldName].length === 0) {
-      return
-    }
-
-    setFormData((prevState) => {
-      const FileArray = Array.isArray(prevState[fieldName]) ? [...prevState[fieldName]] : [];
-      const newEntry = { id: FileArray.length, fileName: "" };
-      return {
-        ...prevState,
-        [fieldName]: [...FileArray, newEntry],
-      };
-    });
+    console.log(fieldName)
+    dispatch(addFileArray({ title: title, name: fieldName }))
   };
 
   const handleRemoveFileArray = (fieldName: string, id: number) => {
-    setFormData((prevState) => {
-      const updatedData = prevState[fieldName].filter((file) => file?.id !== id)
-      return {
-        ...prevState, [fieldName]: updatedData
-      }
-    })
-
+    dispatch(deleteFileArray({ title: title, name: fieldName, index: id }))
   }
+
   const renderField = (field: fieldsTypes) => {
 
     switch (field.types) {
@@ -100,15 +72,22 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
           <>
             <div className='d-flex'>
 
-              <div className='multiple-upload'>
+              <div className='multiple-upload '>
                 <aside>
-                  <div className="fileUpload">
+                  <div className="fileUpload fileUpload--preview fileUpload--loader">
+
                     <input
                       type="file"
                       className="uploadBtn upload"
                       name={field.name}
                       onChange={(e) => handleChange(e, 0)}
                     />
+                    {formData[field.name]?.[0]?.fileName && (
+                      <button type="button"
+                        onClick={() => handleRemoveFileArray(field.name, 0)} className='uploadBtn'>
+                        <i className="fa fa-times">X</i>
+                      </button>
+                    )}
                     <input
                       className="uploadFile path"
                       placeholder="Choose file"
@@ -116,9 +95,12 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
                       readOnly
                     />
                     <span>Upload</span>
+
                   </div>
                   <span className="upload-error">Accepted Formats (.pdf/.xlsx/.png/.jpeg)</span>
                 </aside>
+
+
               </div>
 
               {field.multiple && (
@@ -132,16 +114,22 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
               )}
             </div>
 
-            {Array.isArray(formData?.[field.name]) && formData[field.name].slice(1, formData[field.name].length).map((file, index) => (
+            {Array.isArray(formData?.[field.name]) && formData[field.name].slice(1, formData[field.name].length).map((file, index: number) => (
               <div key={index} className="multiple-upload gap-2">
                 <aside>
-                  <div className="fileUpload">
+                  <div className="fileUpload fileUpload--preview fileUpload--loader">
                     <input
                       type="file"
                       className="uploadBtn upload"
                       name={field.name}
-                      onChange={(e) => handleChange(e, file.id)}
-                    />
+                      onChange={(e) => handleChange(e, file.id)} />
+                    {file?.fileName && (
+                      <button type="button"
+                        onClick={() => handleRemoveFileArray(field.name, file.id)} className='uploadBtn'>
+                        <i className="fa fa-times">X</i>
+                      </button>
+                    )}
+
                     <input
                       className="uploadFile path"
                       placeholder="Choose file"
@@ -152,46 +140,12 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
                   </div>
                   <span className="upload-error">Accepted Formats (.pdf/.xlsx/.png/.jpeg)</span>
                 </aside>
-                <button
-                  type="button"
-                  className="p-3 rounded-5"
-                  onClick={() => handleRemoveFileArray(field.name, file.id)}
-                >
-                  Delete
-                </button>
               </div>
             ))}
           </>
-
-          //       <div className="file-upload-container">
-          //   <div className="fileUpload">
-          //     <input
-          //       type="file"
-          //       className="uploadBtn"
-          //       name={field.name}
-          //       multiple
-          //       onChange={handleChange}
-          //     />
-          //     <span>Upload</span>
-          //   </div>
-          //   <span className="upload-error">Accepted Formats (.pdf/.xlsx/.png/.jpeg)</span>
-
-          //   <div className="uploaded-files">
-          //   {formData[field.name].map((file, index) => (
-          //       <div key={file.id} className="file-item">
-          //         <span>{file.fileName}</span>
-          //         <button
-          //           type="button"
-          //           onClick={() => handleRemoveFileArray(field.name ,file.id)}
-          //         >
-          //           Delete
-          //         </button>
-          //       </div>
-          //     ))}
-          //   </div>
-          // </div>
         );
       case 'textarea':
+
         return (
           <textarea
             className="form-control"
@@ -226,15 +180,14 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
               <div className="row">
 
                 {formArray?.fields.map((field, index) => (
-                  (!field?.refKey || field?.refKey === formData.purpose ? (
+                  (!field?.refKey || field?.refKey === formData?.purpose ? (
                     <div key={index} className={`mt-3 col-12 ${field.types === 'textarea' ? 'col-xl-12' : 'col-md-6'}`}>
                       <label htmlFor="">
                         {field.label}
                       </label>
                       {renderField(field)}
                       <div className="validation-wrapper">
-
-                        <p className="validation-wrapper">{errors[field.name]}</p>
+                        <p >{errors[field.name]}</p>
                       </div>
                     </div>
                   ) : (null))
@@ -246,39 +199,9 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
               </div>
             </form>
 
-            {/* <div className="fileUpload">
-                                          <input
-                                            id="attachment1"
-                                            type="file"
-                                            className="uploadBtn upload"
-                                          />
-                                          <input
-                                            className="uploadFile path"
-                                            placeholder="Choose file"
-                                          />
-                                          <span>Upload</span>
-                                        </div> */}
-            {/* <ul class="validation-wrapper">
-                                          <li>
-                                             <a>test error</a>
-                                          </li>
-                                       </ul> */}
-
-
           </aside>
 
         </div>
-        {/* <div className="col-12 col-md-3 section-wrapper-box">
-                            <div className="information-box">
-                              <img src="images/icons/information-icon.svg" />
-                              <h4>General information</h4>
-                              <p>
-                                This form in only Applicable for Qatar Airways
-                                Staffs. You will be asked to provide proof to verify
-                                it.
-                              </p>
-                            </div>
-                          </div> */}
       </div>
     </div>
   )

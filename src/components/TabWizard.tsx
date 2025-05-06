@@ -1,12 +1,14 @@
 import React from 'react'
-import { formArray } from '../common/data/dataArray'
 import { useSelector } from 'react-redux';
+
+import { formArray } from '../common/data/dataArray'
 import { storedFormData } from '../redux/slice/formSlice';
+import { checkValidation, findFormData } from '../utils/utils';
 
 const TabWizard = (props) => {
-  const { handleTab } = props;
+  const { handleTab,activeTab } = props;
   const storedData=useSelector(storedFormData)
-  console.log('::::',storedData)
+  
 
   return (
     <div className="content-area__head-block">
@@ -36,12 +38,13 @@ const TabWizard = (props) => {
             {Object.keys(formArray).map((key) => (
               <li
                 key={formArray[key].id}
-                className={`nav-item nav-fill form-wizard__filled`}
+                className={`nav-item nav-fill ${checkValidation({storedData:findFormData({savedData:storedData,title:key}),title:key})?'form-wizard__filled':''}`}
+                // form-wizard__filled
                 role="presentation"
               >
                 <button
                   onClick={()=>handleTab(key)}
-                  className={`nav-link active`}
+                  className={`nav-link ${activeTab===key&&'active'}`}
                   id="general-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#general"

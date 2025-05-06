@@ -1,9 +1,15 @@
+
 import { FormType, validationProps } from "../common/types/types";
+import { formArray } from "../common/data/dataArray";
 
 
 
 export const checkValidation = (props:validationProps): boolean => {
-    const {currentForm,formData,setErrors}=props;
+    const {setErrors,title,storedData}=props;
+    
+    const formData=storedData?.formData
+    const currentForm=formArray[title]
+
     const newError: FormType = {};
   
     currentForm.fields.forEach((field) => {
@@ -23,7 +29,15 @@ export const checkValidation = (props:validationProps): boolean => {
         newError[field.name] = `${field.label} is required`;
       }
     });
-  
+
+  if(setErrors){
     setErrors(newError);
+  }
     return Object.keys(newError).length === 0;
   };
+
+  export const findFormData=(props)=>{
+    const {savedData,title}=props;
+     const formData=savedData.find(data => data.title === title)
+    return formData||null
+  }
