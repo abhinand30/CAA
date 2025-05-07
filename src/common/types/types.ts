@@ -5,15 +5,15 @@ interface fieldsTypes{
     options?:string[];
     multiple?:boolean;
     refKey?:string;
+    isRequired?:boolean;
 }
 interface FormType {
-    [key: string]:any;
+    
+    [key: string]:{ [key: string]: string | { id: number; fileName: string; }[]; }
 }
 interface FormsProps{
     title: string;
     [key: string]:any
-    []
-
 }
 interface tabTypes{
     fields:fieldsTypes[];
@@ -33,17 +33,21 @@ interface FormComponentProps{
         id: number; 
         title: string; 
     fields:fieldsTypes[];
+
     };
     handelNext:() => void;
-    formData:FormType;
+    formData:any;
     // setFormData:React.Dispatch<React.SetStateAction<FormType>>;
-    setErrors:React.Dispatch<React.SetStateAction<FormType>>;
-    errors:FormType;
-    title:string
+    setErrors:React.Dispatch<React.SetStateAction<errorType>>;
+    errors:errorType;
+    title:string;
 }
 
+interface errorType{
+    [key:string]:string
+}
 interface validationProps{
-//     currentForm:{id: number; 
+//     currentForm:{id: number
 //     fields: {
 //         name: string;
 //         types: string;
@@ -56,8 +60,16 @@ interface validationProps{
 //     }[]
 // }
 title: string;
-setErrors?:React.Dispatch<React.SetStateAction<FormType>>;
-storedData:FormType;
+setErrors?:React.Dispatch<React.SetStateAction<errorType>>;
+storedData:{ title: string; formData: { [key: string]: string | { id: number; fileName: string; }[]; }; } | undefined
 }
 
-export type{FormsProps,fieldsTypes,FormType,tabTypes,tabProps,FormComponentProps,validationProps}
+interface formTabProps{
+    handleTab:(id:number)=>void;
+    activeTab:number;
+}
+interface fileType{
+    id:number;
+    fileName:string;
+}
+export type{FormsProps,fieldsTypes,FormType,tabTypes,tabProps,FormComponentProps,validationProps,formTabProps,errorType,fileType}

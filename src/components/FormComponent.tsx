@@ -1,21 +1,23 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { fieldsTypes, FormComponentProps } from '../common/types/types';
+import { fieldsTypes, fileType, FormComponentProps } from '../common/types/types';
 import { addFileArray, deleteFileArray, updateField } from '../redux/slice/formSlice';
 
 
 
 
 const FormComponent: React.FC<FormComponentProps> = (props) => {
+  
   const { formArray, handelNext, formData, setErrors, errors, title } = props;
 
   const dispatch = useDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>, index?: number) => {
-    const { name, value, type, files } = e.target;
-
-    dispatch(updateField({ title, name, value: type === 'file' ? files?.[0]?.name : value, index }))
+    const { name, value, type } = e.target;
+    const files = (e.target as HTMLInputElement).files;
+    const fileName = files?.[0]?.name ?? '';
+    dispatch(updateField({ title, name, value: type === 'file' ? fileName : value, index }))
 
     setErrors((prevState) => ({
       ...prevState, [name]: ''
@@ -30,6 +32,7 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
   };
 
   const handleRemoveFileArray = (fieldName: string, id: number) => {
+   
     dispatch(deleteFileArray({ title: title, name: fieldName, index: id }))
   }
 
@@ -70,79 +73,83 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
       case 'file':
         return (
           <>
-            <div className='d-flex'>
-
-              <div className='multiple-upload '>
-                <aside>
-                  <div className="fileUpload fileUpload--preview fileUpload--loader">
-
-                    <input
-                      type="file"
-                      className="uploadBtn upload"
-                      name={field.name}
-                      onChange={(e) => handleChange(e, 0)}
-                    />
-                    {formData[field.name]?.[0]?.fileName && (
-                      <button type="button"
-                        onClick={() => handleRemoveFileArray(field.name, 0)} className='uploadBtn'>
-                        <i className="fa fa-times">X</i>
-                      </button>
-                    )}
-                    <input
-                      className="uploadFile path"
-                      placeholder="Choose file"
-                      value={formData[field.name]?.[0]?.fileName || ''}
-                      readOnly
-                    />
-                    <span>Upload</span>
-
-                  </div>
-                  <span className="upload-error">Accepted Formats (.pdf/.xlsx/.png/.jpeg)</span>
-                </aside>
-
-
-              </div>
-
-              {field.multiple && (
-                <button
-                  type="button"
-                  className="multiple-upload__plus"
-                  onClick={() => handleAddFileArray(field.name)}
-                >
-                  <span className='fs-1'>+</span>
-                </button>
-              )}
+          <div className='d-flex'>
+        
+            <div className='multiple-upload '>
+              <aside>
+                <div className="fileUpload fileUpload--preview fileUpload--loader">
+                  <input
+                    type="file"
+                    className="uploadBtn upload"
+                    name={field.name}
+                    onChange={(e) => handleChange(e, 0)}
+                  />
+                  {formData[field.name]?.length > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveFileArray(field.name, 0)}
+                      className='uploadBtn'
+                    >
+                      <i className="fa fa-times">X</i>
+                    </button>
+                  )}
+                  <input
+                    className="uploadFile path"
+                    placeholder="Choose file"
+                    value={formData[field.name]?.[0]?.fileName || ''}
+                    readOnly
+                  />
+                  <span>Upload</span>
+                </div>
+                <span className="upload-error">Accepted Formats (.pdf/.xlsx/.png/.jpeg)</span>
+              </aside>
             </div>
-
-            {Array.isArray(formData?.[field.name]) && formData[field.name].slice(1, formData[field.name].length).map((file, index: number) => (
-              <div key={index} className="multiple-upload gap-2">
-                <aside>
-                  <div className="fileUpload fileUpload--preview fileUpload--loader">
-                    <input
-                      type="file"
-                      className="uploadBtn upload"
-                      name={field.name}
-                      onChange={(e) => handleChange(e, file.id)} />
-                    {file?.fileName && (
-                      <button type="button"
-                        onClick={() => handleRemoveFileArray(field.name, file.id)} className='uploadBtn'>
-                        <i className="fa fa-times">X</i>
-                      </button>
-                    )}
-
-                    <input
-                      className="uploadFile path"
-                      placeholder="Choose file"
-                      value={file?.fileName || ''}
-                      readOnly
-                    />
-                    <span>Upload</span>
-                  </div>
-                  <span className="upload-error">Accepted Formats (.pdf/.xlsx/.png/.jpeg)</span>
-                </aside>
-              </div>
-            ))}
-          </>
+        
+            {field.multiple && (
+              <button
+                type="button"
+                className="multiple-upload__plus"
+                onClick={() =>handleAddFileArray(field.name)}
+              >
+                <span className='fs-1'>+</span>
+              </button>
+            )}
+          </div>
+        
+          {Array.isArray(formData?.[field.name]) && formData[field.name].slice(1).map((file:fileType, index:number) => (
+            <div key={file.id || index} className="multiple-upload gap-2">
+              <aside>
+                <div className="fileUpload fileUpload--preview fileUpload--loader">
+                  <input
+                    type="file"
+                    className="uploadBtn upload"
+                    name={field.name}
+                    onChange={(e) => handleChange(e, file.id)}
+                  />
+                  {file?.fileName && (
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveFileArray(field.name, file.id)}
+                      className='uploadBtn'
+                    >
+                      <i className="fa fa-times">X</i>
+                    </button>
+                  )}
+        
+                  <input
+                    className="uploadFile path"
+                    placeholder="Choose file"
+                    value={file?.fileName || ''}
+                    readOnly
+                  />
+                  <span>Upload</span>
+                </div>
+                <span className="upload-error">Accepted Formats (.pdf/.xlsx/.png/.jpeg)</span>
+              </aside>
+            </div>
+          ))}
+        </>
+        
         );
       case 'textarea':
 
@@ -176,21 +183,26 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
               larger than the paragraph text of the article.
             </p>
 
+
             <form className="form-wrapper" onSubmit={(e) => { e.preventDefault(); handelNext() }}>
-              <div className="row">
+              <div className="row ">
 
                 {formArray?.fields.map((field, index) => (
                   (!field?.refKey || field?.refKey === formData?.purpose ? (
-                    <div key={index} className={`mt-3 col-12 ${field.types === 'textarea' ? 'col-xl-12' : 'col-md-6'}`}>
+                    <div key={index} className={`mt-3 col-12 ${field.types === 'textarea' ? 'col-xl-12' : 'col-md-6'} justify-content-between`}>
                       <label htmlFor="">
                         {field.label}
                       </label>
+                      {!field.isRequired&&(
+                         <span className='text-danger'>*</span>
+                      )}
+                     
                       {renderField(field)}
                       <div className="validation-wrapper">
                         <p >{errors[field.name]}</p>
                       </div>
                     </div>
-                  ) : (null))
+                  ):null)
 
                 ))}
               </div>
@@ -201,6 +213,14 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
 
           </aside>
 
+
+        </div>
+        <div className="col-12 col-md-3 section-wrapper-box">
+          <div className="information-box">
+            <img src="images/icons/information-icon.svg" />
+            <h4>General information</h4>
+            <p>This form in only Applicable for Qatar Airways Staffs. You will be asked to provide proof to verify it.</p>
+          </div>
         </div>
       </div>
     </div>

@@ -4,7 +4,8 @@ import { storedFormData } from '../redux/slice/formSlice';
 
 import { formArray } from '../common/data/dataArray';
 
-const SummaryComponent = (props) => {
+type FormKeys = keyof typeof formArray;
+const SummaryComponent = () => {
 
     // const { handleTab } = props;
     const storedData = useSelector(storedFormData);
@@ -28,7 +29,7 @@ const SummaryComponent = (props) => {
 
                                     <div key={idx} className="info">
                                         <h3>
-                                            <span>{formArray[data?.title].title}</span>
+                                            <span>{formArray[data.title as FormKeys].title}</span>
                                         </h3>
                                         {data?.title === 'appInfo' && (
                                             <div className="info__profile">

@@ -4,24 +4,24 @@ import { useState } from 'react';
 import { formArray } from '../common/data/dataArray'
 
 import { storedFormData } from '../redux/slice/formSlice';
-import { FormType } from '../common/types/types';
+import { errorType, formTabProps } from '../common/types/types';
 import FormComponent from './FormComponent';
 import { checkValidation } from '../utils/utils';
-// import { checkValidation} from '../utils/utils';
 
-const Documents = (props) => {
-  const { handleTab } = props;
+
+const Documents:React.FC<formTabProps> = (props) => {
+  const { handleTab,activeTab } = props;
+
   const savedData = useSelector(storedFormData);
   const title = 'documents'
   const formData = savedData.find(data => data.title === title)
 
-  const [errors, setErrors] = useState<FormType>({});
+  const [errors, setErrors] = useState<errorType>({});
 
   const handleSubmit = () => {
     const isValidate = checkValidation({ setErrors: setErrors, title: title, storedData: formData });
-
     if (isValidate) {
-      handleTab('addInfo')
+      handleTab(activeTab+1)
     }
   };
 

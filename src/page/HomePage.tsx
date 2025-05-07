@@ -10,48 +10,60 @@ import Footer from '../components/Footer';
 import TabWizard from '../components/TabWizard';
 import { storedFormData } from '../redux/slice/formSlice';
 import { checkValidation, findFormData } from '../utils/utils';
+import { formArray } from '../common/data/dataArray';
 
 const HomePage = () => {
-  const storedData=useSelector(storedFormData)
+  const storedData = useSelector(storedFormData)
 
-  const [activeTab, setActiveTab] = useState<string>('appInfo');
+  const [activeTab, setActiveTab] = useState<number>(1);
 
- 
-    const tabSelection = () => {
-      switch (activeTab) {
-        case 'appInfo':
-          return (
-            <AppInfo handleTab={handleTab}/>
-          )
-        case 'documents':
-          return (
-            <Documents handleTab={handleTab}/>
-          )
-        case 'addInfo':
-          return (
-            <AddInfo handleTab={handleTab}/>
-          )
-        case 'summary':
-          return (
-            <SummaryComponent handleTab={handleTab}/>
-          )
-      }
+
+  const tabSelection = () => {
+    switch (activeTab) {
+      case 1:
+        return (
+          <AppInfo handleTab={handleTab} activeTab={activeTab} />
+        )
+      case 2:
+        return (
+          <Documents handleTab={handleTab} activeTab={activeTab} />
+        )
+      case 3:
+        return (
+          <AddInfo handleTab={handleTab} activeTab={activeTab} />
+        )
+      case 4:
+        return (
+          <SummaryComponent/>
+        )
     }
+  }
+ 
+  const handleTab = (id: number) => {
     
-    const handleTab = (tab: string) => {
-      const currentValidate = checkValidation({
-        storedData: findFormData({ savedData: storedData, title: activeTab }),
-        title: activeTab,
-      });
-      const isValidate=checkValidation({storedData:findFormData({savedData:storedData,title:tab}),title:tab});
+    if (activeTab===3){
+      setActiveTab(id);
+      return
+    }
+  
+    const currentTab = Object.keys(formArray);
+    if (activeTab > id) {
+        setActiveTab(id);
+        return;
+    }
 
-      if (currentValidate) {
-        setActiveTab(tab);
-      }else if(isValidate){
-        setActiveTab(tab);
-      }
-    };
-    
+    const isValidate = checkValidation({
+      storedData: findFormData({ savedData: storedData, title: currentTab[activeTab - 1] }),
+      title: currentTab[activeTab - 1]
+    });
+
+    if (isValidate) {
+        setActiveTab(id);
+    }
+};
+
+
+
   return (
     <div>
       <Header />
@@ -59,15 +71,19 @@ const HomePage = () => {
         <div className="container ">
           <div className="row">
             <div className="col-12">
+              
               <div className="content-area">
-                <TabWizard handleTab={handleTab} activeTab={activeTab}/>
+                
+                <TabWizard handleTab={handleTab} activeTab={activeTab} />
+                
                 {tabSelection()}
-                <Footer />
               </div>
+              
             </div>
           </div>
         </div>
       </main>
+      <Footer />
     </div>
 
 
