@@ -27,7 +27,7 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
 
 
   const handleAddFileArray = (fieldName: string) => {
-    console.log(fieldName)
+    
     dispatch(addFileArray({ title: title, name: fieldName }))
   };
 
@@ -193,9 +193,8 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
                       <label htmlFor="">
                         {field.label}
                       </label>
-                      {!field.isRequired&&(
-                         <span className='text-danger'>*</span>
-                      )}
+                      {!field.isRequired===false && <span className='text-danger'>*</span>}
+
                      
                       {renderField(field)}
                       <div className="validation-wrapper">

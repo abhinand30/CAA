@@ -72,4 +72,8 @@ interface fileType{
     id:number;
     fileName:string;
 }
-export type{FormsProps,fieldsTypes,FormType,tabTypes,tabProps,FormComponentProps,validationProps,formTabProps,errorType,fileType}
+interface findFormDataProps{
+    title: string;
+    savedData:any;
+}
+export type{FormsProps,fieldsTypes,FormType,tabTypes,tabProps,FormComponentProps,validationProps,formTabProps,errorType,fileType,findFormDataProps}
