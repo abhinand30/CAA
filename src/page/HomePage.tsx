@@ -40,27 +40,32 @@ const HomePage = () => {
   }
  
   const handleTab = (id: number) => {
-    
-    if (activeTab===3){
-      setActiveTab(id);
-      return
-    }
-  
     const currentTab = Object.keys(formArray);
+    const title = currentTab[activeTab - 1];
+
+  
     if (activeTab > id) {
         setActiveTab(id);
         return;
     }
 
+  
+    if (title === 'addInfo') {
+        setActiveTab(id);
+        return;
+    }
+
+
     const isValidate = checkValidation({
-      storedData: findFormData({ savedData: storedData, title: currentTab[activeTab - 1] }),
-      title: currentTab[activeTab - 1]
+        storedData: findFormData({ savedData: storedData, title }),
+        title
     });
 
     if (isValidate) {
         setActiveTab(id);
     }
 };
+
 
 
 

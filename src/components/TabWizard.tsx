@@ -7,8 +7,10 @@ import { checkValidation, findFormData } from '../utils/utils';
 import { formTabProps } from '../common/types/types';
 
 type FormKeys = keyof typeof formArray;
+
 const TabWizard:React.FC<formTabProps> = (props) => {
   const { handleTab,activeTab } = props;
+  
   const storedData=useSelector(storedFormData)
   
 

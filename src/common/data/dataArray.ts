@@ -66,15 +66,15 @@ const formArray = {
             { name: 'transferFlight', types: 'file',  label: 'Complete ATS Router',refKey:'Training' },
             { name: 'Touch&GoNumber', types: 'file',  label: 'Number of Touch & Go',refKey:'Training' },
             { name: 'trainingTime', types: 'text',  label: 'Time of Training',refKey:'Training' },
-            { name: 'groundHandling', types: 'text',isRequired:false, label: 'Ground Handling Confirmation',refKey:'Training' },
+            { name: 'groundHandling', types: 'text',isNotRequired:true, label: 'Ground Handling Confirmation',refKey:'Training' },
            
         ]
     },
     addInfo:{
         id: 3, title: 'Additional Information',
         fields: [
-            { name: 'additionalDetails', types: 'textarea', label: 'Additional details',isRequired:false, },
-            { name: 'additionalAttachment', types: 'file',multiple:true, label: 'Additional attachment',isRequired:false, },
+            { name: 'additionalDetails', types: 'textarea', label: 'Additional details',isNotRequired:true, },
+            { name: 'additionalAttachment', types: 'file',multiple:true, label: 'Additional attachment',isNotRequired:true, },
         ]
     },
     summary:{

@@ -5,12 +5,9 @@ import { fieldsTypes, fileType, FormComponentProps } from '../common/types/types
 import { addFileArray, deleteFileArray, updateField } from '../redux/slice/formSlice';
 
 
-
-
 const FormComponent: React.FC<FormComponentProps> = (props) => {
   
   const { formArray, handelNext, formData, setErrors, errors, title } = props;
-
   const dispatch = useDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>, index?: number) => {
@@ -22,17 +19,14 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
     setErrors((prevState) => ({
       ...prevState, [name]: ''
     }))
-
   }
 
 
   const handleAddFileArray = (fieldName: string) => {
-    
     dispatch(addFileArray({ title: title, name: fieldName }))
   };
 
   const handleRemoveFileArray = (fieldName: string, id: number) => {
-   
     dispatch(deleteFileArray({ title: title, name: fieldName, index: id }))
   }
 
@@ -193,7 +187,7 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
                       <label htmlFor="">
                         {field.label}
                       </label>
-                      {!field.isRequired===false && <span className='text-danger'>*</span>}
+                      {!field.isNotRequired && <span className='text-danger'>*</span>}
 
                      
                       {renderField(field)}

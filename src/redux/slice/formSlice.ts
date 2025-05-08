@@ -19,8 +19,8 @@ const formSlice = createSlice({
       const { title, name, value, index } = action.payload;
       const form = state.forms.find(f => f.title === title);
       if (form) {
-        if (title === 'purpose') {
-          form.formData = []
+        if (name === 'purpose') {
+          form.formData = {}
         }
         if (index !== undefined) {
           const fileArray = Array.isArray(form?.formData[name]) && form?.formData[name].length > 0

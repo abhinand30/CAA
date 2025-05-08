@@ -5,7 +5,7 @@ interface fieldsTypes{
     options?:string[];
     multiple?:boolean;
     refKey?:string;
-    isRequired?:boolean;
+    isNotRequired?:boolean;
 }
 interface FormType {
     
@@ -74,6 +74,6 @@ interface fileType{
 }
 interface findFormDataProps{
     title: string;
-    savedData:any;
+    savedData:{ title: string; formData: { [key: string]: string | { id: number; fileName: string; }[]; }; }[]|undefined;
 }
 export type{FormsProps,fieldsTypes,FormType,tabTypes,tabProps,FormComponentProps,validationProps,formTabProps,errorType,fileType,findFormDataProps}
