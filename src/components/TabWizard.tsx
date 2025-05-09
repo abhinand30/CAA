@@ -8,11 +8,11 @@ import { formTabProps } from '../common/types/types';
 
 type FormKeys = keyof typeof formArray;
 
-const TabWizard:React.FC<formTabProps> = (props) => {
-  const { handleTab,activeTab } = props;
-  
-  const storedData=useSelector(storedFormData)
-  
+const TabWizard: React.FC<formTabProps> = (props) => {
+  const { handleTab} = props;
+
+  const storedData = useSelector(storedFormData)
+
 
   return (
     <div className="content-area__head-block">
@@ -42,21 +42,20 @@ const TabWizard:React.FC<formTabProps> = (props) => {
             {Object.keys(formArray).map((key) => (
               <li
                 key={formArray[key as FormKeys].id}
-                className={`nav-item nav-fill ${checkValidation({storedData:findFormData({savedData:storedData,title:key}),title:key})?'form-wizard__filled':''}`}
-                // form-wizard__filled
+                className={`nav-item nav-fill ${checkValidation({ storedData: findFormData({ savedData: storedData, title: key }), title: key }) ? 'form-wizard__filled' : ''}`}
                 role="presentation"
               >
+                {/* k active */}
                 <button
-                  onClick={()=>handleTab(formArray[key as FormKeys].id)}
-                  className={`nav-link ${activeTab===formArray[key as FormKeys].id&&'active'}`}
-                  id="general-tab"
+                  className="nav-link"
                   data-bs-toggle="tab"
-                  data-bs-target="#general"
-                  type="button"
+                  data-bs-target={`#${key}`}
                   role="tab"
-                  aria-controls="home"
-                  aria-selected="true"
+                  aria-controls={key}
+                  aria-selected="false"
+                  onClick={(event) => handleTab(event, key)}
                 >
+          
                   <span className="form-wizard__completed" />
                   <span className="form-wizard__no">0{formArray[key as FormKeys].id}</span>
                   {formArray[key as FormKeys].title}

@@ -22,20 +22,10 @@ const AddInfo:React.FC<formTabProps> = (props) => {
   };
 
   return (
-    <div className="content-area__main">
-      <div className="tab-content" id="myTabContent">
-        <div
-          className="tab-pane fade show active"
-          id="general"
-          role="tabpanel"
-          aria-labelledby="general-tab"
-        >
+   
 
           <FormComponent handelNext={handleSubmit} formArray={formArray.addInfo}
             errors={errors} setErrors={setErrors} title={title} formData={formData?.formData} />
-        </div>
-      </div>
-    </div>
   )
 }
 
