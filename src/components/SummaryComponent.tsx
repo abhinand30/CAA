@@ -11,9 +11,6 @@ const SummaryComponent = () => {
     const storedData = useSelector(storedFormData);
 
     return (
-
-
-
         <div className="section-wrapper">
             <div className="row">
                 <div className="col-12">

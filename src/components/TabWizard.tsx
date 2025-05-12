@@ -1,17 +1,40 @@
-import React from 'react'
+import { useState } from 'react'
 import { useSelector } from 'react-redux';
 
 import { formArray } from '../common/data/dataArray'
 import { storedFormData } from '../redux/slice/formSlice';
 import { checkValidation, findFormData } from '../utils/utils';
-import { formTabProps } from '../common/types/types';
+
 
 type FormKeys = keyof typeof formArray;
 
-const TabWizard: React.FC<formTabProps> = (props) => {
-  const { handleTab} = props;
+const TabWizard = () => {
 
-  const storedData = useSelector(storedFormData)
+  const [activeTab, setActiveTab] = useState<number>(1);
+  const storedData = useSelector(storedFormData);
+
+
+  const isDisabled = (id: number): boolean => {
+    const currentTabs = Object.keys(formArray);
+    const title = currentTabs[activeTab - 1];
+
+    if (activeTab > id || title === 'addInfo') {
+      return false;
+    }
+
+    const isValidate = checkValidation({
+      storedData: findFormData({ savedData: storedData, title: title }),
+      title: title,
+    });
+
+    return !isValidate;
+  };
+
+  const handleTabClick = (id: number) => {
+    if (!isDisabled(id)) {
+      setActiveTab(id);
+    }
+  };
 
 
   return (
@@ -45,21 +68,21 @@ const TabWizard: React.FC<formTabProps> = (props) => {
                 className={`nav-item nav-fill ${checkValidation({ storedData: findFormData({ savedData: storedData, title: key }), title: key }) ? 'form-wizard__filled' : ''}`}
                 role="presentation"
               >
-                {/* k active */}
                 <button
-                  className="nav-link"
-                  data-bs-toggle="tab"
+                  className={`nav-link ${activeTab === formArray[key as FormKeys].id && 'active'}`}
+                  data-bs-toggle={`tab`}
                   data-bs-target={`#${key}`}
                   role="tab"
                   aria-controls={key}
-                  aria-selected="false"
-                  onClick={(event) => handleTab(event, key)}
+                  aria-selected={true}
+                  disabled={isDisabled(formArray[key as FormKeys].id)}
+                  onClick={() => handleTabClick(formArray[key as FormKeys].id)}
                 >
-          
                   <span className="form-wizard__completed" />
                   <span className="form-wizard__no">0{formArray[key as FormKeys].id}</span>
                   {formArray[key as FormKeys].title}
                 </button>
+
               </li>
             ))}
 

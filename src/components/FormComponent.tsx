@@ -6,7 +6,7 @@ import { addFileArray, deleteFileArray, updateField } from '../redux/slice/formS
 
 
 const FormComponent: React.FC<FormComponentProps> = (props) => {
-  
+
   const { formArray, handelNext, formData, setErrors, errors, title } = props;
   const dispatch = useDispatch();
 
@@ -67,83 +67,83 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
       case 'file':
         return (
           <>
-          <div className='d-flex'>
-        
-            <div className='multiple-upload '>
-              <aside>
-                <div className="fileUpload fileUpload--preview fileUpload--loader">
-                  <input
-                    type="file"
-                    className="uploadBtn upload"
-                    name={field.name}
-                    onChange={(e) => handleChange(e, 0)}
-                  />
-                  {formData[field.name]?.length > 0 && (
-                    <button
-                      type="button"
-                      onClick={() => handleRemoveFileArray(field.name, 0)}
-                      className='uploadBtn'
-                    >
-                      <i className="fa fa-times">X</i>
-                    </button>
-                  )}
-                  <input
-                    className="uploadFile path"
-                    placeholder="Choose file"
-                    value={formData[field.name]?.[0]?.fileName || ''}
-                    readOnly
-                  />
-                  <span>Upload</span>
-                </div>
-                <span className="upload-error">Accepted Formats (.pdf/.xlsx/.png/.jpeg)</span>
-              </aside>
+            <div className='d-flex'>
+
+              <div className='multiple-upload '>
+                <aside>
+                  <div className="fileUpload fileUpload--preview fileUpload--loader">
+                    <input
+                      type="file"
+                      className="uploadBtn upload"
+                      name={field.name}
+                      onChange={(e) => handleChange(e, 0)}
+                    />
+                    {formData[field.name]?.length > 0 && (
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveFileArray(field.name, 0)}
+                        className='uploadBtn'
+                      >
+                        <i className="fa fa-times">X</i>
+                      </button>
+                    )}
+                    <input
+                      className="uploadFile path"
+                      placeholder="Choose file"
+                      value={formData[field.name]?.[0]?.fileName || ''}
+                      readOnly
+                    />
+                    <span>Upload</span>
+                  </div>
+                  <span className="upload-error">Accepted Formats (.pdf/.xlsx/.png/.jpeg)</span>
+                </aside>
+              </div>
+
+              {field.multiple && (
+                <button
+                  type="button"
+                  className="multiple-upload__plus"
+                  onClick={() => handleAddFileArray(field.name)}
+                >
+                  <span className='fs-1'>+</span>
+                </button>
+              )}
             </div>
-        
-            {field.multiple && (
-              <button
-                type="button"
-                className="multiple-upload__plus"
-                onClick={() =>handleAddFileArray(field.name)}
-              >
-                <span className='fs-1'>+</span>
-              </button>
-            )}
-          </div>
-        
-          {Array.isArray(formData?.[field.name]) && formData[field.name].slice(1).map((file:fileType, index:number) => (
-            <div key={file.id || index} className="multiple-upload gap-2">
-              <aside>
-                <div className="fileUpload fileUpload--preview fileUpload--loader">
-                  <input
-                    type="file"
-                    className="uploadBtn upload"
-                    name={field.name}
-                    onChange={(e) => handleChange(e, file.id)}
-                  />
-                  {file?.fileName && (
-                    <button
-                      type="button"
-                      onClick={() => handleRemoveFileArray(field.name, file.id)}
-                      className='uploadBtn'
-                    >
-                      <i className="fa fa-times">X</i>
-                    </button>
-                  )}
-        
-                  <input
-                    className="uploadFile path"
-                    placeholder="Choose file"
-                    value={file?.fileName || ''}
-                    readOnly
-                  />
-                  <span>Upload</span>
-                </div>
-                <span className="upload-error">Accepted Formats (.pdf/.xlsx/.png/.jpeg)</span>
-              </aside>
-            </div>
-          ))}
-        </>
-        
+
+            {Array.isArray(formData?.[field.name]) && formData[field.name].slice(1).map((file: fileType, index: number) => (
+              <div key={file.id || index} className="multiple-upload gap-2">
+                <aside>
+                  <div className="fileUpload fileUpload--preview fileUpload--loader">
+                    <input
+                      type="file"
+                      className="uploadBtn upload"
+                      name={field.name}
+                      onChange={(e) => handleChange(e, file.id)}
+                    />
+                    {file?.fileName && (
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveFileArray(field.name, file.id)}
+                        className='uploadBtn'
+                      >
+                        <i className="fa fa-times">X</i>
+                      </button>
+                    )}
+
+                    <input
+                      className="uploadFile path"
+                      placeholder="Choose file"
+                      value={file?.fileName || ''}
+                      readOnly
+                    />
+                    <span>Upload</span>
+                  </div>
+                  <span className="upload-error">Accepted Formats (.pdf/.xlsx/.png/.jpeg)</span>
+                </aside>
+              </div>
+            ))}
+          </>
+
         );
       case 'textarea':
 
@@ -163,60 +163,28 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
 
 
   return (
-    <div className="section-wrapper">
-      <div className="row">
-        <div className="col-12 col-md-9 section-wrapper-content">
-          <span className="number-line">0{formArray.id}</span>
 
-          <aside>
-            <h3>{formArray.title}</h3>
-            <p className="content-opacity">
-              A sub-heading is a mini-headline given to a
-              subsection or paragraph within a main piece of
-              writing. They're smaller than the main headline but
-              larger than the paragraph text of the article.
-            </p>
-
-
-            <form className="form-wrapper" onSubmit={(e) => { e.preventDefault(); handelNext() }}>
-              <div className="row ">
-
-                {formArray?.fields.map((field, index) => (
-                  (!field?.refKey || field?.refKey === formData?.purpose ? (
-                    <div key={index} className={`mt-3 col-12 ${field.types === 'textarea' ? 'col-xl-12' : 'col-md-6'} justify-content-between`}>
-                      <label htmlFor="">
-                        {field.label}
-                      </label>
-                      {!field.isNotRequired && <span className='text-danger'>*</span>}
-
-                     
-                      {renderField(field)}
-                      <div className="validation-wrapper">
-                        <p >{errors[field.name]}</p>
-                      </div>
-                    </div>
-                  ):null)
-
-                ))}
+    <form className="form-wrapper" onSubmit={(e) => { e.preventDefault(); handelNext() }}>
+      <div className="row ">
+        {formArray?.fields.map((field, index) => (
+          (!field?.refKey || field?.refKey === formData?.purpose ? (
+            <div key={index} className={`mt-3 col-12 ${field.types === 'textarea' ? 'col-xl-12' : 'col-md-6'} justify-content-between`}>
+              <label htmlFor="">
+                {field.label}
+              </label>
+              {!field.isNotRequired && <span className='text-danger'>*</span>}
+              {renderField(field)}
+              <div className="validation-wrapper">
+                <p >{errors[field.name]}</p>
               </div>
-              <div className="btn-pagination">
-                <button type='submit' className="btn btn-primary">Next</button>
-              </div>
-            </form>
-
-          </aside>
-
-
-        </div>
-        <div className="col-12 col-md-3 section-wrapper-box">
-          <div className="information-box">
-            <img src="images/icons/information-icon.svg" />
-            <h4>General information</h4>
-            <p>This form in only Applicable for Qatar Airways Staffs. You will be asked to provide proof to verify it.</p>
-          </div>
-        </div>
+            </div>
+          ) : null)
+        ))}
       </div>
-    </div>
+      <div className="btn-pagination">
+        <button type='submit' className="btn btn-primary">Next</button>
+      </div>
+    </form>
   )
 }
 

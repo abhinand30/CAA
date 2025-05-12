@@ -1,8 +1,8 @@
 
 const Header = () => {
-    return (
-        <>
-        <header className="page-header clearfix">
+  return (
+    <>
+      <header className="page-header clearfix">
         <div className="header-top">
           <div className="header-top__logo">
             <div className="col col-sm-auto">
@@ -213,355 +213,355 @@ const Header = () => {
       </header>
       {/*  */}
       <div className="main-menu">
-    <div className="d-flex main-menu__scroll">
-      <div
-        className="nav flex-column nav-pills"
-        id="v-pills-tab"
-        role="tablist"
-        aria-orientation="vertical"
-      >
-        <div className="main-menu__heading">
-          <p>MENU</p>
+        <div className="d-flex main-menu__scroll">
+          <div
+            className="nav flex-column nav-pills"
+            id="v-pills-tab"
+            role="tablist"
+            aria-orientation="vertical"
+          >
+            <div className="main-menu__heading">
+              <p>MENU</p>
+            </div>
+            <a
+              className="nav-link active"
+              id="v-pills-about-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-about"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-about"
+              aria-selected="true"
+            >
+              About CAA
+            </a>
+            <a
+              className="nav-link"
+              id="v-pills-participation-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-participation"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-participation"
+              aria-selected="false"
+            >
+              E Participations
+            </a>
+            <a
+              className="nav-link"
+              id="v-pills-service-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-service"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-service"
+              aria-selected="false"
+            >
+              E Services
+            </a>
+            <a
+              className="nav-link"
+              id="v-pills-law-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-law"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-law"
+              aria-selected="false"
+            >
+              Laws And Regulations
+            </a>
+            <a
+              className="nav-link"
+              id="v-pills-media-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-media"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-media"
+              aria-selected="false"
+            >
+              Media Center
+            </a>
+            <a
+              className="nav-link"
+              id="v-pills-data-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-data"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-data"
+              aria-selected="false"
+            >
+              Open Data
+            </a>
+          </div>
+          <div className="tab-content" id="v-pills-tabContent">
+            <div className="main-menu__search">
+              <div className="form-group">
+                <label htmlFor="search">
+                  Search Website
+                  <img src="images/icons/search.svg" alt="" />
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="search"
+                  placeholder="Search Website"
+                />
+              </div>
+            </div>
+            <div
+              className="tab-pane fade show active"
+              id="v-pills-about"
+              role="tabpanel"
+              aria-labelledby="v-pills-about-tab"
+            >
+              <div className="main-menu__column">
+                <p>Who we are</p>
+                <ul>
+                  <li>
+                    <a href="">Brief</a>
+                  </li>
+                  <li>
+                    <a href="">President Message</a>
+                  </li>
+                </ul>
+              </div>
+              <div className="main-menu__column main-menu__column--two">
+                <p>Departments and Units</p>
+                <ul>
+                  <li>
+                    <a href="">International Cooperation</a>
+                  </li>
+                  <li>
+                    <a href="">Internal Audit</a>
+                  </li>
+                  <li>
+                    <a href="">Planning and Quality</a>
+                  </li>
+                  <li>
+                    <a href="">Legal Affairs</a>
+                  </li>
+                  <li>
+                    <a href="">Public Relations and Communication</a>
+                  </li>
+                  <li>
+                    <a href="">Air Accidents &amp; Incidents Investigation</a>
+                  </li>
+                  <li>
+                    <a href="">Human Resources</a>
+                  </li>
+                  <li>
+                    <a href="">Financial and Administrative Affairs</a>
+                  </li>
+                  <li>
+                    <a href="">Air Navigation</a>
+                  </li>
+                  <li>
+                    <a href="">Planning and Quality</a>
+                  </li>
+                  <li>
+                    <a href="">Information Systems</a>
+                  </li>
+                  <li>
+                    <a href="">Meteorology</a>
+                  </li>
+                  <li>
+                    <a href="">Legal Affairs</a>
+                  </li>
+                  <li>
+                    <a href="">Air Safety</a>
+                  </li>
+                  <li>
+                    <a href="">Airport Affairs</a>
+                  </li>
+                  <li>
+                    <a href="">Public Relations and Communication</a>
+                  </li>
+                  <li>
+                    <a href="">Air Transport</a>
+                  </li>
+                  <li>
+                    <a href="">Fire Fighting and Rescue</a>
+                  </li>
+                  <li>
+                    <a href="">Air Accidents &amp; Incidents Investigation</a>
+                  </li>
+                </ul>
+              </div>
+              <div className="main-menu__column">
+                <p>Who we are</p>
+                <ul>
+                  <li>
+                    <a href="">Brief</a>
+                  </li>
+                  <li>
+                    <a href="">President Message</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div
+              className="tab-pane fade"
+              id="v-pills-participation"
+              role="tabpanel"
+              aria-labelledby="v-pills-participation-tab"
+            >
+              <div className="main-menu__column">
+                <p>E-Participations</p>
+                <ul>
+                  <li>
+                    <a href="">E-Participations</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div
+              className="tab-pane fade"
+              id="v-pills-service"
+              role="tabpanel"
+              aria-labelledby="v-pills-service-tab"
+            >
+              <div className="main-menu__column">
+                <p>Inquiry</p>
+                <ul>
+                  <li>
+                    <a href="">Air Cargo Agencies Directory</a>
+                  </li>
+                  <li>
+                    <a href="">Travel Agencies Directory</a>
+                  </li>
+                </ul>
+              </div>
+              <div className="main-menu__column">
+                <p>Travel &amp; Air Cargo Agencies</p>
+                <ul>
+                  <li>
+                    <a href="">Agencies Special Request</a>
+                  </li>
+                  <li>
+                    <a href="">Agency Cancelation</a>
+                  </li>
+                  <li>
+                    <a href="">Agency Data Modification</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div
+              className="tab-pane fade"
+              id="v-pills-law"
+              role="tabpanel"
+              aria-labelledby="v-pills-law-tab"
+            >
+              <div className="main-menu__column">
+                <p>Civil Aviation Regulations</p>
+                <ul>
+                  <li>
+                    <a href="">Air Safety Regulations</a>
+                  </li>
+                  <li>
+                    <a href="">Air Transport Regulations</a>
+                  </li>
+                  <li>
+                    <a href="">Safety Directives</a>
+                  </li>
+                  <li>
+                    <a href="">Information Leaflets</a>
+                  </li>
+                  <li>
+                    <a href="">Publications</a>
+                  </li>
+                  <li>
+                    <a href="">Notice Of Proposed Amendment</a>
+                  </li>
+                </ul>
+              </div>
+              <div className="main-menu__column">
+                <p>Aviation Laws</p>
+                <li>
+                  <a href="">General</a>
+                </li>
+                <li>
+                  <a href="">Air Transport &amp; Airport Affairs Laws</a>
+                </li>
+                <li>
+                  <a href="">Aviation Security Laws</a>
+                </li>
+                <li>
+                  <a href="">Airport User Regulation</a>
+                </li>
+              </div>
+              <div className="main-menu__column">
+                <p>Air Safety Forms</p>
+                <ul>
+                  <li>
+                    <a href="">Airworthiness</a>
+                  </li>
+                  <li>
+                    <a href="">Aerodromes</a>
+                  </li>
+                  <li>
+                    <a href="">Flight Operations</a>
+                  </li>
+                  <li>
+                    <a href="">Air Navigation Services</a>
+                  </li>
+                  <li>
+                    <a href="">General Forms</a>
+                  </li>
+                  <li>
+                    <a href="">Safety Management Systems</a>
+                  </li>
+                  <li>
+                    <a href="">Licensing</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div
+              className="tab-pane fade"
+              id="v-pills-media"
+              role="tabpanel"
+              aria-labelledby="v-pills-media-tab"
+            >
+              <div className="main-menu__column">
+                <p>News</p>
+                <ul>
+                  <li>
+                    <a href="">Aviation News</a>
+                  </li>
+                  <li>
+                    <a href="">QCAA News</a>
+                  </li>
+                </ul>
+              </div>
+              <div className="main-menu__column">
+                <p>Procedures</p>
+                <ul>
+                  <li>
+                    <a href="">Air Travel/ Air Cargo Offices</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div
+              className="tab-pane fade"
+              id="v-pills-data"
+              role="tabpanel"
+              aria-labelledby="v-pills-data-tab"
+            >
+              <div className="main-menu__column">
+                <p>Open Data</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <a
-          className="nav-link active"
-          id="v-pills-about-tab"
-          data-bs-toggle="pill"
-          data-bs-target="#v-pills-about"
-          type="button"
-          role="tab"
-          aria-controls="v-pills-about"
-          aria-selected="true"
-        >
-          About CAA
-        </a>
-        <a
-          className="nav-link"
-          id="v-pills-participation-tab"
-          data-bs-toggle="pill"
-          data-bs-target="#v-pills-participation"
-          type="button"
-          role="tab"
-          aria-controls="v-pills-participation"
-          aria-selected="false"
-        >
-          E Participations
-        </a>
-        <a
-          className="nav-link"
-          id="v-pills-service-tab"
-          data-bs-toggle="pill"
-          data-bs-target="#v-pills-service"
-          type="button"
-          role="tab"
-          aria-controls="v-pills-service"
-          aria-selected="false"
-        >
-          E Services
-        </a>
-        <a
-          className="nav-link"
-          id="v-pills-law-tab"
-          data-bs-toggle="pill"
-          data-bs-target="#v-pills-law"
-          type="button"
-          role="tab"
-          aria-controls="v-pills-law"
-          aria-selected="false"
-        >
-          Laws And Regulations
-        </a>
-        <a
-          className="nav-link"
-          id="v-pills-media-tab"
-          data-bs-toggle="pill"
-          data-bs-target="#v-pills-media"
-          type="button"
-          role="tab"
-          aria-controls="v-pills-media"
-          aria-selected="false"
-        >
-          Media Center
-        </a>
-        <a
-          className="nav-link"
-          id="v-pills-data-tab"
-          data-bs-toggle="pill"
-          data-bs-target="#v-pills-data"
-          type="button"
-          role="tab"
-          aria-controls="v-pills-data"
-          aria-selected="false"
-        >
-          Open Data
-        </a>
       </div>
-      <div className="tab-content" id="v-pills-tabContent">
-        <div className="main-menu__search">
-          <div className="form-group">
-            <label htmlFor="search">
-              Search Website
-              <img src="images/icons/search.svg" alt="" />
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="search"
-              placeholder="Search Website"
-            />
-          </div>
-        </div>
-        <div
-          className="tab-pane fade show active"
-          id="v-pills-about"
-          role="tabpanel"
-          aria-labelledby="v-pills-about-tab"
-        >
-          <div className="main-menu__column">
-            <p>Who we are</p>
-            <ul>
-              <li>
-                <a href="">Brief</a>
-              </li>
-              <li>
-                <a href="">President Message</a>
-              </li>
-            </ul>
-          </div>
-          <div className="main-menu__column main-menu__column--two">
-            <p>Departments and Units</p>
-            <ul>
-              <li>
-                <a href="">International Cooperation</a>
-              </li>
-              <li>
-                <a href="">Internal Audit</a>
-              </li>
-              <li>
-                <a href="">Planning and Quality</a>
-              </li>
-              <li>
-                <a href="">Legal Affairs</a>
-              </li>
-              <li>
-                <a href="">Public Relations and Communication</a>
-              </li>
-              <li>
-                <a href="">Air Accidents &amp; Incidents Investigation</a>
-              </li>
-              <li>
-                <a href="">Human Resources</a>
-              </li>
-              <li>
-                <a href="">Financial and Administrative Affairs</a>
-              </li>
-              <li>
-                <a href="">Air Navigation</a>
-              </li>
-              <li>
-                <a href="">Planning and Quality</a>
-              </li>
-              <li>
-                <a href="">Information Systems</a>
-              </li>
-              <li>
-                <a href="">Meteorology</a>
-              </li>
-              <li>
-                <a href="">Legal Affairs</a>
-              </li>
-              <li>
-                <a href="">Air Safety</a>
-              </li>
-              <li>
-                <a href="">Airport Affairs</a>
-              </li>
-              <li>
-                <a href="">Public Relations and Communication</a>
-              </li>
-              <li>
-                <a href="">Air Transport</a>
-              </li>
-              <li>
-                <a href="">Fire Fighting and Rescue</a>
-              </li>
-              <li>
-                <a href="">Air Accidents &amp; Incidents Investigation</a>
-              </li>
-            </ul>
-          </div>
-          <div className="main-menu__column">
-            <p>Who we are</p>
-            <ul>
-              <li>
-                <a href="">Brief</a>
-              </li>
-              <li>
-                <a href="">President Message</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div
-          className="tab-pane fade"
-          id="v-pills-participation"
-          role="tabpanel"
-          aria-labelledby="v-pills-participation-tab"
-        >
-          <div className="main-menu__column">
-            <p>E-Participations</p>
-            <ul>
-              <li>
-                <a href="">E-Participations</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div
-          className="tab-pane fade"
-          id="v-pills-service"
-          role="tabpanel"
-          aria-labelledby="v-pills-service-tab"
-        >
-          <div className="main-menu__column">
-            <p>Inquiry</p>
-            <ul>
-              <li>
-                <a href="">Air Cargo Agencies Directory</a>
-              </li>
-              <li>
-                <a href="">Travel Agencies Directory</a>
-              </li>
-            </ul>
-          </div>
-          <div className="main-menu__column">
-            <p>Travel &amp; Air Cargo Agencies</p>
-            <ul>
-              <li>
-                <a href="">Agencies Special Request</a>
-              </li>
-              <li>
-                <a href="">Agency Cancelation</a>
-              </li>
-              <li>
-                <a href="">Agency Data Modification</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div
-          className="tab-pane fade"
-          id="v-pills-law"
-          role="tabpanel"
-          aria-labelledby="v-pills-law-tab"
-        >
-          <div className="main-menu__column">
-            <p>Civil Aviation Regulations</p>
-            <ul>
-              <li>
-                <a href="">Air Safety Regulations</a>
-              </li>
-              <li>
-                <a href="">Air Transport Regulations</a>
-              </li>
-              <li>
-                <a href="">Safety Directives</a>
-              </li>
-              <li>
-                <a href="">Information Leaflets</a>
-              </li>
-              <li>
-                <a href="">Publications</a>
-              </li>
-              <li>
-                <a href="">Notice Of Proposed Amendment</a>
-              </li>
-            </ul>
-          </div>
-          <div className="main-menu__column">
-            <p>Aviation Laws</p>
-            <li>
-              <a href="">General</a>
-            </li>
-            <li>
-              <a href="">Air Transport &amp; Airport Affairs Laws</a>
-            </li>
-            <li>
-              <a href="">Aviation Security Laws</a>
-            </li>
-            <li>
-              <a href="">Airport User Regulation</a>
-            </li>
-          </div>
-          <div className="main-menu__column">
-            <p>Air Safety Forms</p>
-            <ul>
-              <li>
-                <a href="">Airworthiness</a>
-              </li>
-              <li>
-                <a href="">Aerodromes</a>
-              </li>
-              <li>
-                <a href="">Flight Operations</a>
-              </li>
-              <li>
-                <a href="">Air Navigation Services</a>
-              </li>
-              <li>
-                <a href="">General Forms</a>
-              </li>
-              <li>
-                <a href="">Safety Management Systems</a>
-              </li>
-              <li>
-                <a href="">Licensing</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div
-          className="tab-pane fade"
-          id="v-pills-media"
-          role="tabpanel"
-          aria-labelledby="v-pills-media-tab"
-        >
-          <div className="main-menu__column">
-            <p>News</p>
-            <ul>
-              <li>
-                <a href="">Aviation News</a>
-              </li>
-              <li>
-                <a href="">QCAA News</a>
-              </li>
-            </ul>
-          </div>
-          <div className="main-menu__column">
-            <p>Procedures</p>
-            <ul>
-              <li>
-                <a href="">Air Travel/ Air Cargo Offices</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div
-          className="tab-pane fade"
-          id="v-pills-data"
-          role="tabpanel"
-          aria-labelledby="v-pills-data-tab"
-        >
-          <div className="main-menu__column">
-            <p>Open Data</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
       {/*  */}
-      </>
-    )
+    </>
+  )
 }
 
 export default Header

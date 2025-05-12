@@ -1,5 +1,5 @@
 
-import { errorType, fieldsTypes, validationProps } from "../common/types/types";
+import { errorType, fieldsTypes, findFormDataProps, validationProps } from "../common/types/types";
 import { formArray } from "../common/data/dataArray";
 
 type FormKeys = keyof typeof formArray;
@@ -15,7 +15,8 @@ export const checkValidation = (props: validationProps): boolean => {
   let checkValueInAddInfo=false;
 
   currentForm.fields.forEach((field: fieldsTypes) => {
-    const fieldValue = formData[field.name];
+    
+    const fieldValue = formData?formData[field.name]:undefined;
 
     if (title === 'addInfo') {
       const containsValue = Array.isArray(fieldValue)
@@ -40,6 +41,9 @@ export const checkValidation = (props: validationProps): boolean => {
       if (field.name === 'email' && typeof fieldValue === 'string' && !fieldValue.match(isValidEmail)) {
         newError[field.name] = `${field.label} is not valid`;
       }
+      if (field.name === 'phone' && fieldValue?.length!>10) {
+        newError[field.name] = `${field.label} is not valid`;
+      }
 
       if (Array.isArray(fieldValue) && fieldValue.some(item => item.fileName?.trim() === '')) {
         newError[field.name] = `${field.label} is required`;
@@ -59,12 +63,10 @@ export const checkValidation = (props: validationProps): boolean => {
 };
 
 
-
-
-
-
-export const findFormData = (props) => {
+export const findFormData = (props:findFormDataProps) => {
   const { savedData, title } = props;
   const formData = savedData.find(data => data.title === title)
   return formData || null
 }
+
+
