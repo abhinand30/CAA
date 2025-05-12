@@ -41,7 +41,8 @@ export const checkValidation = (props: validationProps): boolean => {
       if (field.name === 'email' && typeof fieldValue === 'string' && !fieldValue.match(isValidEmail)) {
         newError[field.name] = `${field.label} is not valid`;
       }
-      if (field.name === 'phone' && fieldValue?.length!>10) {
+  
+      if (field.name === 'phone' &&typeof fieldValue === 'string' && fieldValue.length!<10) {
         newError[field.name] = `${field.label} is not valid`;
       }
 

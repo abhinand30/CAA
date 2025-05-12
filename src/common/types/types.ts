@@ -44,7 +44,7 @@ interface validationProps{
 // }
 title: string;
 setErrors?:React.Dispatch<React.SetStateAction<errorType>>;
-storedData:{ title: string; formData: { [key: string]: string | { id: number; fileName: string; }[]; }; } | undefined
+storedData:{ title: string; formData: { [key: string]: string | { id: number; fileName: string; }[]; }; }|undefined
 }
 
 interface fileType{
@@ -53,6 +53,6 @@ interface fileType{
 }
 interface findFormDataProps{
     title: string;
-    savedData:{ title: string; formData: { [key: string]: string | { id: number; fileName: string; }[]; }; }[];
+    savedData:{ title: string; formData: { [key: string]: string | { id: number; fileName: string; }[]; }; }[]|undefined;
 }
 export type{fieldsTypes,FormType,FormComponentProps,validationProps,errorType,fileType,findFormDataProps}

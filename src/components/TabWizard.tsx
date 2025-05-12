@@ -23,7 +23,7 @@ const TabWizard = () => {
     }
 
     const isValidate = checkValidation({
-      storedData: findFormData({ savedData: storedData, title: title }),
+      storedData: findFormData({ savedData: storedData, title: title })||undefined,
       title: title,
     });
 
@@ -65,7 +65,7 @@ const TabWizard = () => {
             {Object.keys(formArray).map((key) => (
               <li
                 key={formArray[key as FormKeys].id}
-                className={`nav-item nav-fill ${checkValidation({ storedData: findFormData({ savedData: storedData, title: key }), title: key }) ? 'form-wizard__filled' : ''}`}
+                className={`nav-item nav-fill ${checkValidation({ storedData: findFormData({ savedData: storedData, title: key })||undefined, title: key }) ? 'form-wizard__filled' : ''}`}
                 role="presentation"
               >
                 <button
